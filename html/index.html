@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="window-container">
+      <!--
+################################################################################
+        Header
+################################################################################
+        -->
+      <div class="window-header">
+        <h2>
+          <i class="fas fa-hammer"></i>
+          Admin Panel
+        </h2>
+        <div class="admin-switch">
+          <label class="switch">
+            <input type="checkbox" id="adminActiveSwitch" />
+            <span class="slider round"></span>
+          </label>
+          <span>Admin-Modus</span>
+        </div>
+      </div>
+
+      <div class="row no-gutters">
+        <!--
+################################################################################
+        Sidebar Menü
+################################################################################
+        -->
+        <nav id="sidebarMenu" class="col-md-5 col-lg-4 d-md-block sidebar">
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active menu-item" href="#" data-target="spieler">
+                  <i class="fas fa-users"></i>
+                  Spieler
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="fahrzeuge">
+                  <i class="fas fa-car"></i>
+                  Fahrzeuge
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="position">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Position
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="unsichtbarkeit">
+                  <i class="fas fa-eye-slash"></i>
+                  Unsichtbarkeit
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="unsterblich">
+                  <i class="fas fa-shield-alt"></i>
+                  Unsterblich
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="freecam">
+                  <i class="fas fa-video"></i>
+                  FreeCam
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="namen-zeigen">
+                  <i class="fas fa-id-badge"></i>
+                  Namen Zeigen
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="nachricht">
+                  <i class="fas fa-envelope"></i>
+                  Broadcast/Private Nachricht
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="teleport">
+                  <i class="fas fa-location-arrow"></i>
+                  Teleportieren
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="alarm">
+                  <i class="fas fa-bell"></i>
+                  Alarme
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="objectattacher">
+                  <i class="fas fa-link"></i>
+                  ObjectAttacher
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="fahrzeug-spawnen">
+                  <i class="fas fa-car-side"></i>
+                  Fahrzeug Spawnen
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-7 ml-sm-auto col-lg-8 px-md-4">
+          <!--
+################################################################################
+        Spieler
+################################################################################
+        -->
+
+          <div id="content-spieler" class="content-section">
+            <div class="search-bar">
+              <input type="text" class="form-control" placeholder="Spielername/ID..." id="searchPlayer" />
+            </div>
+            <div class="player-list">
+              <div class="player-item">
+                <span class="player-name">John Doe</span>
+                <span class="player-id">ID: 10001</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Jane Smith</span>
+                <span class="player-id">ID: 10002</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Michael Johnson</span>
+                <span class="player-id">ID: 10003</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Emily Davis</span>
+                <span class="player-id">ID: 10004</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">David Wilson</span>
+                <span class="player-id">ID: 10005</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Sarah Brown</span>
+                <span class="player-id">ID: 10006</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Chris Miller</span>
+                <span class="player-id">ID: 10007</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Amanda Moore</span>
+                <span class="player-id">ID: 10008</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Daniel Taylor</span>
+                <span class="player-id">ID: 10009</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Jessica Anderson</span>
+                <span class="player-id">ID: 10010</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Andrew Thomas</span>
+                <span class="player-id">ID: 10011</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Olivia Jackson</span>
+                <span class="player-id">ID: 10012</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Joshua White</span>
+                <span class="player-id">ID: 10013</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Megan Harris</span>
+                <span class="player-id">ID: 10014</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Ryan Martin</span>
+                <span class="player-id">ID: 10015</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Sophia Lee</span>
+                <span class="player-id">ID: 10016</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Matthew Perez</span>
+                <span class="player-id">ID: 10017</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Isabella Thompson</span>
+                <span class="player-id">ID: 10018</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Ethan Robinson</span>
+                <span class="player-id">ID: 10019</span>
+              </div>
+              <div class="player-item">
+                <span class="player-name">Mia Clark</span>
+                <span class="player-id">ID: 10020</span>
+              </div>
+            </div>
+          </div>
+          <!--
+################################################################################
+        Fahrzeug
+################################################################################
+        -->
+          <div id="content-fahrzeuge" class="content-section" style="display: none">
+            <div class="search-bar d-flex align-items-center">
+              <select id="searchCategory" class="form-control mr-2">
+                <option value="model">Modell</option>
+                <option value="license">Kennzeichen</option>
+                <option value="id">ID</option>
+              </select>
+              <input type="text" class="form-control" placeholder="Suchbegriff eingeben..." id="searchVehicle" />
+            </div>
+            <div class="vehicle-list">
+              <div class="vehicle-item">
+                <span class="vehicle-model">Adder</span>
+                <span class="vehicle-license">Kennzeichen: XYZ123</span>
+                <span class="vehicle-id">ID: 30001</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Banshee</span>
+                <span class="vehicle-license">Kennzeichen: ABC456</span>
+                <span class="vehicle-id">ID: 30002</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Buffalo</span>
+                <span class="vehicle-license">Kennzeichen: DEF789</span>
+                <span class="vehicle-id">ID: 30003</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Cheetah</span>
+                <span class="vehicle-license">Kennzeichen: GHI012</span>
+                <span class="vehicle-id">ID: 30004</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Entity XF</span>
+                <span class="vehicle-license">Kennzeichen: JKL345</span>
+                <span class="vehicle-id">ID: 30005</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Futo</span>
+                <span class="vehicle-license">Kennzeichen: MNO678</span>
+                <span class="vehicle-id">ID: 30006</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Infernus</span>
+                <span class="vehicle-license">Kennzeichen: PQR901</span>
+                <span class="vehicle-id">ID: 30007</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Kuruma</span>
+                <span class="vehicle-license">Kennzeichen: STU234</span>
+                <span class="vehicle-id">ID: 30008</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Massacro</span>
+                <span class="vehicle-license">Kennzeichen: VWX567</span>
+                <span class="vehicle-id">ID: 30009</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Sultan</span>
+                <span class="vehicle-license">Kennzeichen: YZA890</span>
+                <span class="vehicle-id">ID: 30010</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">T20</span>
+                <span class="vehicle-license">Kennzeichen: BCD123</span>
+                <span class="vehicle-id">ID: 30011</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Vagner</span>
+                <span class="vehicle-license">Kennzeichen: EFG456</span>
+                <span class="vehicle-id">ID: 30012</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Zentorno</span>
+                <span class="vehicle-license">Kennzeichen: HIJ789</span>
+                <span class="vehicle-id">ID: 30013</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Blista</span>
+                <span class="vehicle-license">Kennzeichen: KLM012</span>
+                <span class="vehicle-id">ID: 30014</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Comet</span>
+                <span class="vehicle-license">Kennzeichen: NOP345</span>
+                <span class="vehicle-id">ID: 30015</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Elegy</span>
+                <span class="vehicle-license">Kennzeichen: QRS678</span>
+                <span class="vehicle-id">ID: 30016</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Felon</span>
+                <span class="vehicle-license">Kennzeichen: TUV901</span>
+                <span class="vehicle-id">ID: 30017</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Gauntlet</span>
+                <span class="vehicle-license">Kennzeichen: WXY234</span>
+                <span class="vehicle-id">ID: 30018</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Hotknife</span>
+                <span class="vehicle-license">Kennzeichen: ZAB567</span>
+                <span class="vehicle-id">ID: 30019</span>
+              </div>
+              <div class="vehicle-item">
+                <span class="vehicle-model">Jester</span>
+                <span class="vehicle-license">Kennzeichen: CDE890</span>
+                <span class="vehicle-id">ID: 30020</span>
+              </div>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+                Position
+################################################################################
+            -->
+
+          <div id="content-position" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="showCurrentPosition" />
+                <span class="slider round"></span>
+              </label>
+              <span>Aktuelle Position anzeigen</span>
+            </div>
+            <div class="coordinates">
+              <div class="coordinate-item">
+                <label for="xCoord">x Koordinate:</label>
+                <input type="text" id="xCoord" class="form-control" readonly />
+                <button class="btn btn-secondary copyCoord" data-target="xCoord">Kopieren</button>
+              </div>
+              <div class="coordinate-item">
+                <label for="yCoord">y Koordinate:</label>
+                <input type="text" id="yCoord" class="form-control" readonly />
+                <button class="btn btn-secondary copyCoord" data-target="yCoord">Kopieren</button>
+              </div>
+              <div class="coordinate-item">
+                <label for="zCoord">z Koordinate:</label>
+                <input type="text" id="zCoord" class="form-control" readonly />
+                <button class="btn btn-secondary copyCoord" data-target="zCoord">Kopieren</button>
+              </div>
+              <div class="coordinate-item">
+                <label for="rotation">Rotation:</label>
+                <input type="text" id="rotation" class="form-control" readonly />
+                <button class="btn btn-secondary copyCoord" data-target="rotation">Kopieren</button>
+              </div>
+            </div>
+            <div class="button-group">
+              <button id="copyPos" class="btn btn-primary">Aktuelle Position Kopieren</button>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+                Unsichtbarkeit
+################################################################################
+            -->
+
+          <div id="content-unsichtbarkeit" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="toggleVisibility" />
+                <span class="slider round"></span>
+              </label>
+              <span>Unsichtbarkeit aktivieren</span>
+            </div>
+            <p id="visibilityStatus" class="status-text">Du bist gerade sichtbar</p>
+          </div>
+
+          <!--
+################################################################################
+                Unsterblich
+################################################################################
+            -->
+
+          <div id="content-unsterblich" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="toggleImmortality" />
+                <span class="slider round"></span>
+              </label>
+              <span>Unsterblichkeit aktivieren</span>
+            </div>
+            <p id="immortalityStatus" class="status-text">Du bist gerade nicht unsterblich</p>
+          </div>
+
+          <!--
+################################################################################
+                FreeCam
+################################################################################
+            -->
+
+          <div id="content-freecam" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="toggleFreeCam" />
+                <span class="slider round"></span>
+              </label>
+              <span>FreeCam Aktivieren</span>
+            </div>
+            <p id="freeCamStatus" class="status-text">FreeCam ist Deaktiviert</p>
+            <div class="button-group">
+              <button id="slowDownFreeCam" class="btn btn-primary">FreeCam Verlangsamen</button>
+              <button id="speedUpFreeCam" class="btn btn-primary">FreeCam Verschnellern</button>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+        Namen zeigen
+################################################################################
+        -->
+          <div id="content-namen-zeigen" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="togglePlayerInfo" />
+                <span class="slider round"></span>
+              </label>
+              <span>Spieler Infos Anzeigen</span>
+            </div>
+            <p id="playerInfoStatus" class="status-text">Du siehst nicht die Spieler Infos</p>
+          </div>
+
+          <!--
+################################################################################
+        Broadcast/Private Nachricht
+################################################################################
+        -->
+          <div id="content-nachricht" class="content-section" style="display: none">
+            <div class="form-group">
+              <label for="messageType">Nachrichtentyp auswählen</label>
+              <select id="messageType" class="form-control">
+                <option value="broadcast">Broadcast</option>
+                <option value="private">Private Nachricht</option>
+              </select>
+            </div>
+
+            <div id="broadcastMessage" class="message-group" style="display: none">
+              <input type="text" id="broadcastInput" class="form-control" placeholder="Nachricht..." />
+              <button id="broadcastSend" class="btn btn-primary">Senden</button>
+            </div>
+
+            <div id="privateMessage" class="message-group" style="display: none">
+              <input type="text" id="playerIdInput" class="form-control" placeholder="Spieler ID" />
+              <input type="text" id="privateMessageInput" class="form-control" placeholder="Nachricht..." />
+              <button id="privateSend" class="btn btn-primary">Senden</button>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+        Teleportieren
+################################################################################
+        -->
+          <div id="content-teleport" class="content-section" style="display: none">
+            <h3>Teleportiere zu einer Position</h3>
+
+            <div class="coordinates-group">
+              <div class="coordinate-item">
+                <label for="xCoordTeleport">x Koordinate:</label>
+                <input type="text" id="xCoordTeleport" class="form-control" />
+              </div>
+              <div class="coordinate-item">
+                <label for="yCoordTeleport">y Koordinate:</label>
+                <input type="text" id="yCoordTeleport" class="form-control" />
+              </div>
+              <div class="coordinate-item">
+                <label for="zCoordTeleport">z Koordinate:</label>
+                <input type="text" id="zCoordTeleport" class="form-control" />
+              </div>
+              <button id="teleportButton" class="btn btn-primary">Teleportieren</button>
+            </div>
+
+            <hr class="divider" />
+            <div class="btn-group">
+              <button id="teleportWaypointButton" class="btn btn-secondary">Teleportieren zum Waypoint</button>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+        Alarme
+################################################################################
+        -->
+          <div id="content-alarm" class="content-section" style="display: none">
+            <div class="button-group">
+              <button id="noozeWithLight" class="btn btn-primary">Nooze mit Licht</button>
+              <button id="noozeWithoutLight" class="btn btn-primary">Nooze ohne Licht</button>
+              <button id="alarmButton" class="btn btn-danger">Alarm</button>
+            </div>
+          </div>
+
+          <!--
+################################################################################
+        ObjectAttacher
+################################################################################
+        -->
+
+          <div id="content-objectattacher" class="content-section" style="display: none">
+            <div class="switch-group">
+              <label class="switch">
+                <input type="checkbox" id="toggleObjectAttacher" />
+                <span class="slider round"></span>
+              </label>
+              <span>ObjectAttacher aktivieren</span>
+            </div>
+            <p id="objectAttacherStatus" class="status-text">ObjectAttacher ist Deaktiviert</p>
+          </div>
+
+          <!--
+################################################################################
+        Fahrzeug Spawnen
+################################################################################
+        -->
+
+          <div id="content-fahrzeug-spawnen" class="content-section" style="display: none">
+            <div class="input-container">
+              <div class="category-dropdown">
+                <select id="categorySelect"></select>
+              </div>
+              <div class="search-bar">
+                <input type="text" class="form-control" id="searchInput" placeholder="Suchen..." spellcheck="false" />
+              </div>
+            </div>
+            <div class="vehicles" id="vehicleContainer"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!--
+################################################################################
+        Popup Spieler
+################################################################################
+        -->
+    <div id="playerPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+
+        <div class="popup-header">
+          <h3 id="playerNameId" class="popup-headline">Spielername (ID: 12345)</h3>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-primary kick">Kicken</button>
+          <button class="btn btn-primary ban">Bannen</button>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-primary tpto">Zum Spieler Teleportieren</button>
+          <button class="btn btn-primary tpme">Spieler zu mir Teleportieren</button>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-primary spectate">Spieler Zuschauen</button>
+          <button class="btn btn-primary revive">Wiederbeleben</button>
+          <button class="btn btn-primary posway">Auf der Karte anzeigen</button>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-primary frakduty">Fraktion duty</button>
+          <button class="btn btn-primary comduty">Company duty</button>
+        </div>
+
+        <div class="input-group">
+          <select id="fraktionDropdown" class="form-control">
+            <option value="fraktion1">Department of Justice</option>
+            <option value="fraktion2">Los Santos Police Department</option>
+            <option value="fraktion3">San Andreas Fire & Medical Department</option>
+            <option value="fraktion4">Auto Club Los Santos</option>
+            <option value="fraktion5">TAXI</option>
+            <option value="fraktion6">Department of Homeland Security</option>
+            <option value="fraktion7">Maze Bank</option>
+            <option value="fraktion8">Weazel News</option>
+            <option value="fraktion9">Stadtverwaltung</option>
+            <option value="fraktion10">Crastenburg</option>
+            <option value="fraktion11">Los Santos Sheriff Department</option>
+            <option value="fraktion12">Einreiseamt</option>
+            <option value="fraktion13">Racing</option>
+            <option value="fraktion14">Gruppe 6</option>
+            <option value="fraktion15">Los Santos Park Ranger</option>
+            <option value="fraktion16">San Andreas Recycling</option>
+            <option value="fraktion17">SA Constructions and Ressources</option>
+            <option value="fraktion18">Bar Association</option>
+            <option value="fraktion19">Los Santos Driving Academy</option>
+            <option value="fraktion20">Department of Security</option>
+            <option value="fraktion21">Los Santos Estate Dynasty</option>
+            <option value="fraktion22">Home Vision</option>
+            <option value="fraktion23">Paleto Bay Veterinary Clinic</option>
+            <option value="fraktion24">Department of Corrections</option>
+          </select>
+          <button class="btn btn-primary setfrak">Fraktion setzen</button>
+        </div>
+
+        <div class="input-group">
+          <select id="companyDropdown" class="form-control">
+            <option value="company1">Go Kart Bahn</option>
+            <option value="company2">Yellow Jack Inn</option>
+            <option value="company3">Free Spot - Unicorn</option>
+            <option value="company4">Sunrise Autos</option>
+            <option value="company5">PDM / Sunrise Cars</option>
+            <option value="company6">Blaine County Motorcycles</option>
+            <option value="company7">RedLine Performance</option>
+            <option value="company8">DreamInk Tattoos</option>
+            <option value="company9">Waffenhändler</option>
+            <option value="company10">Inked Skin</option>
+            <option value="company11">Dönerstube</option>
+            <option value="company12">Tequi - La - La</option>
+            <option value="company13">The Brians</option>
+            <option value="company14">San Andreas Motors</option>
+            <option value="company15">Irish Pub</option>
+            <option value="company16">Weazel News</option>
+            <option value="company17">Poseidon</option>
+            <option value="company18">Benny´s Motor Works</option>
+            <option value="company19">Teahead</option>
+            <option value="company20">San Andreas Racing</option>
+            <option value="company21">BOAT HUB</option>
+            <option value="company22">Free Spot - Kanzlei</option>
+            <option value="company23">Generation X Club</option>
+            <option value="company24">Porter Brewery</option>
+            <option value="company25">Möbelland</option>
+            <option value="company26">Los Santos Shelter</option>
+            <option value="company27">Adventure Explorer</option>
+            <option value="company28">Lasertag</option>
+            <option value="company29">Los Santos Volunteer Fire Department</option>
+            <option value="company30">Bernard Hausmeister Service</option>
+            <option value="company31">SNEAKZ</option>
+            <option value="company32">Jennys Cigar</option>
+            <option value="company33">Design Manufactur</option>
+            <option value="company34">Lomann Legal Consulting</option>
+            <option value="company35">Sabores de Mexico</option>
+            <option value="company36">SheNails</option>
+            <option value="company37">Soundfox Tonstudio</option>
+            <option value="company38">MM Cars</option>
+            <option value="company39">Underground Tuning</option>
+            <option value="company40">Gentry Manor Hotel</option>
+            <option value="company41">Rechtsanwalt Nightingale</option>
+            <option value="company42">New Horizon Practice</option>
+            <option value="company43">Veterinary Clinic</option>
+            <option value="company44">Celestial Holding Group</option>
+          </select>
+          <button class="btn btn-primary setcomp">Company setzen</button>
+        </div>
+
+        <!-- Item Eingabe + Button -->
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Item Name" id="itemName" />
+          <button class="btn btn-secondary">Item geben</button>
+        </div>
+      </div>
+    </div>
+
+    <!--
+################################################################################
+        Popup Vehicle
+################################################################################
+        -->
+    <div id="vehiclePopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div class="popup-header">
+          <h5 id="vehicleCompany">Fraktion:</h5>
+          <h5 id="vehicleOwner">Inhaber:</h5>
+          <h5 id="vehicleLocation">Standort:</h5>
+        </div>
+        <div class="button-group">
+          <button class="btn btn-primary">Zeige auf der Karte an</button>
+          <button class="btn btn-primary">Einparken</button>
+          <button class="btn btn-primary">Fahrzeug zu mir Teleportieren</button>
+          <button class="btn btn-primary">Fahrzeug Reparieren</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

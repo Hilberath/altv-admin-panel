@@ -1,0 +1,941 @@
+/*
+Corporate Design:
+
+Primary-Color: #0671DB
+Secondary-Color: #1d8bdb
+
+Background-Color: #303030
+Sec-BG-Color: #131313
+
+Font: Lexend
+*/
+
+:root {
+  --primary-color: #0671db;
+  --secondary-color: #1d8bdb;
+  --background-color: #303030;
+  --secondary-bg-color: #131313;
+  --menu-bg-color: #303030;
+  --text-color: #ffffff;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.window-container {
+  background-color: var(--secondary-bg-color);
+  width: 1100px;
+  height: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.window-container.blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--secondary-bg-color);
+  border-bottom: 1px solid var(--menu-bg-color);
+}
+
+.window-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.admin-switch {
+  display: flex;
+  align-items: center;
+}
+
+.admin-switch span {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--menu-bg-color);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.sidebar {
+  background-color: var(--menu-bg-color);
+  padding-top: 10px;
+  width: 300px;
+  overflow-y: auto;
+}
+
+.nav-link {
+  font-size: 16px;
+  padding: 10px 15px;
+  color: var(--text-color);
+  transition: background-color 0.3s, padding-left 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--primary-color);
+  padding-left: 25px;
+  border-radius: 8px;
+}
+
+.content-section {
+  background-color: var(--menu-bg-color);
+  margin: 0;
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  height: 550px;
+  width: 709px;
+  overflow: hidden; /* Kein Scrollen für die ganze Sektion */
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+################################################################################
+Scrollbar DESIGN
+################################################################################
+*/
+#content-spieler .player-list::-webkit-scrollbar,
+#content-fahrzeuge .vehicle-list::-webkit-scrollbar,
+#content-fahrzeug-spawnen .vehicles::-webkit-scrollbar {
+  width: 20px;
+}
+
+#content-spieler .player-list::-webkit-scrollbar-track,
+#content-fahrzeuge .vehicle-list::-webkit-scrollbar-track,
+#content-fahrzeug-spawnen .vehicles::-webkit-scrollbar-track {
+  background-color: var(--menu-bg-color);
+}
+
+#content-spieler .player-list::-webkit-scrollbar-thumb,
+#content-fahrzeuge .vehicle-list::-webkit-scrollbar-thumb,
+#content-fahrzeug-spawnen .vehicles::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#content-spieler .player-list::-webkit-scrollbar-thumb:hover,
+#content-fahrzeuge .vehicle-list::-webkit-scrollbar-thumb:hover,
+#content-fahrzeug-spawnen .vehicles::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Spieler-, Fahrzeug- und Fahrzeug-Spawn-Listen scrollen */
+#content-spieler .player-list,
+#content-fahrzeuge .vehicle-list,
+#content-fahrzeug-spawnen .vehicles {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 100%; /* Maximale Höhe, damit es korrekt scrollt */
+}
+
+/* Restliche existierende Scrollbar-Einstellungen beibehalten */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--menu-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color);
+}
+
+/*
+################################################################################
+POPUP DESIGN
+################################################################################
+*/
+
+/*
+################################################################################
+POPUP DESIGN Spieler
+################################################################################
+*/
+
+#playerPopup {
+  display: none; /* Popup ist standardmäßig versteckt */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  background-color: var(--menu-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#playerPopup .popup-content {
+  padding: 30px 20px 20px;
+  position: relative;
+}
+
+#playerPopup .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+#playerPopup .popup-header h3 {
+  text-align: center;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+/* Button Row Style */
+#playerPopup .button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#playerPopup .button-row button {
+  flex: 1;
+}
+
+/* Input Row Style */
+#playerPopup .input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#playerPopup .input-row select {
+  flex: 1;
+}
+
+#playerPopup .input-row button {
+  flex-basis: 40%;
+}
+
+#playerPopup .input-group select {
+  padding: 10px;
+  line-height: 10px;
+  height: auto;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Input Group (Item geben) */
+#playerPopup .input-group {
+  display: flex;
+  gap: 10px;
+}
+
+#playerPopup .input-group .form-control {
+  margin-top: 5px;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#playerPopup .input-group .btn {
+  padding: 10px 20px;
+  flex-basis: 40%;
+}
+
+/*
+################################################################################
+POPUP DESIGN Fahrzeuge
+################################################################################
+*/
+#vehiclePopup {
+  display: none; /* Popup ist standardmäßig versteckt */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: var(--menu-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#vehiclePopup .popup-content {
+  padding: 30px 20px 20px;
+  position: relative;
+}
+
+#vehiclePopup .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+#vehiclePopup .popup-header h5 i {
+  margin-right: 10px; /* Abstand zwischen Icon und Text */
+  color: var(--primary-color); /* Optional: Icon-Farbe anpassen */
+  font-size: 18px; /* Optional: Icon-Größe anpassen */
+}
+
+/* Falls du möchtest, dass die Texte und Icons linksbündig ausgerichtet sind */
+#vehiclePopup .popup-header h5 {
+  display: flex;
+  align-items: center;
+}
+
+#vehiclePopup .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#vehiclePopup .button-group .btn {
+  width: 100%;
+  text-align: left;
+}
+
+#vehiclePopup .input-group {
+  display: flex;
+  gap: 10px;
+}
+
+#vehiclePopup .input-group .form-control {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#vehiclePopup .input-group .btn {
+  padding: 10px 20px;
+}
+
+/*
+################################################################################
+Spieler DESIGN
+################################################################################
+*/
+
+#content-spieler .search-bar {
+  margin: 15px;
+}
+
+#content-spieler .search-bar .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-spieler .player-list {
+  margin-top: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#content-spieler .player-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: var(--menu-bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+#content-spieler .player-item:hover {
+  background-color: var(--primary-color);
+}
+
+#content-spieler .player-name {
+  font-size: 16px;
+}
+
+#content-spieler .player-id {
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+
+/*
+################################################################################
+Fahrzeug DESIGN
+################################################################################
+*/
+
+#content-fahrzeuge .search-bar {
+  margin: 15px;
+}
+
+#content-fahrzeuge .search-bar .form-control {
+  width: auto;
+  height: auto;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-fahrzeuge .search-bar select {
+  padding: 10px;
+  line-height: 10px;
+  font-size: 16px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+#content-fahrzeuge .vehicle-list {
+  margin-top: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Styling für die vehicle-item */
+#content-fahrzeuge .vehicle-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Drei Spalten: Modell, Kennzeichen, ID */
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: var(--menu-bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+#content-fahrzeuge .vehicle-item:hover {
+  background-color: var(--primary-color);
+}
+
+#content-fahrzeuge .vehicle-model {
+  text-align: left; /* Text linksbündig für Modell */
+  color: var(--text-color);
+}
+
+#content-fahrzeuge .vehicle-license {
+  text-align: center; /* Text zentriert für Kennzeichen */
+  color: var(--secondary-color);
+}
+
+#content-fahrzeuge .vehicle-id {
+  text-align: right; /* Text rechtsbündig für ID */
+  color: var(--secondary-color);
+}
+
+/*
+################################################################################
+Position DESIGN
+################################################################################
+*/
+
+#content-position .switch.group {
+  display: flex;
+  align-items: center;
+}
+
+#content-position .switch-group .switch {
+  margin-right: 10px;
+  width: 40px;
+  margin: 20px;
+}
+
+#content-position .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-position .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-position .coordinates {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: 15px;
+}
+
+#content-position .coordinate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 15px;
+}
+
+#content-position .coordinate-item label {
+  flex: 1;
+  color: var(--text-color);
+  margin-right: 10px;
+}
+
+#content-position .coordinate-item .form-control {
+  flex: 2;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-position .button-group {
+  margin: 20px;
+}
+
+#content-position .button-group .btn {
+  width: 100%;
+}
+
+/*
+################################################################################
+Unsichtbarkeit DESIGN
+################################################################################
+*/
+#content-unsichtbarkeit .switch-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#content-unsichtbarkeit .switch-group .switch {
+  margin-right: 10px;
+  margin: 20px;
+  width: 40px;
+}
+
+#content-unsichtbarkeit .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-unsichtbarkeit .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-unsichtbarkeit .status-text {
+  margin-left: 20px;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+/*
+################################################################################
+Unsterblich DESIGN
+################################################################################
+*/
+#content-unsterblich .switch-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#content-unsterblich .switch-group .switch {
+  margin: 20px;
+  width: 40px;
+}
+
+#content-unsterblich .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-unsterblich .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-unsterblich .status-text {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-left: 20px;
+}
+/*
+################################################################################
+FreeCam DESIGN
+################################################################################
+*/
+#content-freecam .switch-group {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+#content-freecam .switch-group .switch {
+  margin-right: 10px;
+  width: 40px;
+}
+
+#content-freecam .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-freecam .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-freecam .status-text {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#content-freecam .button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px;
+}
+
+#content-freecam .button-group .btn {
+  flex: 1;
+  text-align: center;
+}
+/*
+################################################################################
+Namen Zeigen DESIGN
+################################################################################
+*/
+
+#content-namen-zeigen .switch-group {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+#content-namen-zeigen .switch-group .switch {
+  margin-right: 10px;
+  width: 40px;
+}
+
+#content-namen-zeigen .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-namen-zeigen .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-namen-zeigen .status-text {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-left: 20px;
+}
+
+/*
+################################################################################
+Broadcast/Private Nachricht DESIGN
+################################################################################
+*/
+
+#content-nachricht .form-group {
+  margin: 20px;
+}
+
+#content-nachricht .form-group select {
+  padding: 10px;
+  line-height: 10px;
+  font-size: 16px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+#content-nachricht .message-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: auto;
+}
+#content-nachricht .form-control {
+  margin-bottom: 10px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-nachricht .message-group .form-control {
+  margin-bottom: 10px;
+}
+
+#content-nachricht .message-group .btn {
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+/*
+################################################################################
+Teleportieren DESIGN
+################################################################################
+*/
+
+#content-teleport h3 {
+  margin: 20px;
+  color: var(--text-color);
+}
+
+#content-teleport .coordinates-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px;
+}
+
+#content-teleport .coordinate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#content-teleport .coordinate-item label {
+  flex: 1;
+  color: var(--text-color);
+  margin-right: 10px;
+}
+
+#content-teleport .coordinate-item .form-control {
+  flex: 2;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-teleport .btn-group {
+  margin: 20px;
+}
+
+#content-teleport .btn {
+  align-self: flex-start;
+}
+
+#content-teleport .divider {
+  border: 0;
+  border-top: 1px solid var(--primary-color);
+  margin: 20px 0;
+}
+
+/*
+################################################################################
+Alarme DESIGN
+################################################################################
+*/
+#content-alarm .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px;
+}
+
+#content-alarm .button-group .btn {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/*
+################################################################################
+ObjectAttacher DESIGN
+################################################################################
+*/
+#content-objectattacher .switch-group {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+#content-objectattacher .switch-group .switch {
+  margin-right: 10px;
+}
+
+#content-objectattacher .switch-group .switch .slider {
+  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+}
+
+#content-objectattacher .switch-group .switch input:checked + .slider {
+  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+}
+
+#content-objectattacher .status-text {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-left: 20px;
+}
+
+/*
+################################################################################
+Fahrzeug Spawnen DESIGN
+################################################################################
+*/
+#content-fahrzeug-spawnen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#content-fahrzeug-spawnen .input-container {
+  margin: 20px;
+}
+
+#content-fahrzeug-spawnen .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+#content-fahrzeug-spawnen .category-dropdown {
+  width: 100%; /* Gleiche Breite wie das Suchfeld */
+  background: var(--categories-bg);
+  border-radius: 10px;
+}
+
+#content-fahrzeug-spawnen .category-dropdown select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-fahrzeug-spawnen .search-bar {
+  width: 100%; /* Gleiche Breite wie das Dropdown-Menü */
+}
+
+#content-fahrzeug-spawnen .search-bar .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+.vehicles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 15px;
+  background: var(--vehicles-container-bg);
+  border-radius: 10px;
+  height: 400px;
+}
+
+#content-fahrzeug-spawnen .vehicle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(33% - 40px);
+  background: var(--vehicle-bg);
+  border-radius: 10px;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 10px;
+  transition: 0.15s all ease-in-out;
+}
+
+#content-fahrzeug-spawnen .vehicle img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+#content-fahrzeug-spawnen .vehicle-name {
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  padding: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#content-fahrzeug-spawnen .vehicle-name:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
