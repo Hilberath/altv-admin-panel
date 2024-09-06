@@ -111,6 +111,18 @@
                   Fahrzeug Spawnen
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="pet-wechseln">
+                  <i class="fas fa-paw"></i>
+                  Petmodel ändern
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="location-teleport">
+                  <i class="fas fa-compass"></i>
+                  Location Teleport
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -534,15 +546,56 @@
           <div id="content-fahrzeug-spawnen" class="content-section" style="display: none">
             <div class="input-container">
               <div class="category-dropdown">
-                <select id="categorySelect"></select>
+                <select id="categorySelectVehicle"></select>
               </div>
               <div class="search-bar">
-                <input type="text" class="form-control" id="searchInput" placeholder="Suchen..." spellcheck="false" />
+                <input type="text" class="form-control" id="searchInputVehicle" placeholder="Suchen..." spellcheck="false" />
               </div>
             </div>
             <div class="vehicles" id="vehicleContainer"></div>
           </div>
-        </main>
+
+          <!--
+################################################################################
+        Petmodel ändern
+################################################################################
+        -->
+
+          <div id="content-pet-wechseln" class="content-section" style="display: none">
+            <div class="input-container">
+              <div class="category-dropdown">
+                <select id="categorySelectPet"></select>
+              </div>
+              <div class="search-bar">
+                <input type="text" class="form-control" id="searchInputPet" placeholder="Suchen..." spellcheck="false" />
+              </div>
+            </div>
+            <div class="pets" id="petContainer"></div>
+          </div>
+
+          <!--
+################################################################################
+        Location Teleport
+################################################################################
+        -->
+
+          <div id="content-location-teleport" class="content-section" style="display: none">
+            <div class="input-container">
+              <div class="category-dropdown">
+                <select id="categorySelectLocation"></select>
+              </div>
+              <div class="search-bar">
+                <input type="text" class="form-control" id="searchInputLocation" placeholder="Suchen..." spellcheck="false" />
+              </div>
+            </div>
+            <div class="locations" id="locationContainer"></div>
+          </div>
+
+          <!--
+################################################################################
+        Container ENDE
+################################################################################
+        --></main>
       </div>
     </div>
 
@@ -584,7 +637,7 @@
           <select id="fraktionDropdown" class="form-control">
             <option value="fraktion1">Department of Justice</option>
             <option value="fraktion2">Los Santos Police Department</option>
-            <option value="fraktion3">San Andreas Fire & Medical Department</option>
+            <option value="fraktion3">San Andreas Fire und Medical Department</option>
             <option value="fraktion4">Auto Club Los Santos</option>
             <option value="fraktion5">TAXI</option>
             <option value="fraktion6">Department of Homeland Security</option>
