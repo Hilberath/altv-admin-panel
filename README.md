@@ -24,6 +24,8 @@ An administration tool for an AltV server.
 - [ ] Play certain sounds and functions like Blackout
 - [ ] Display object information
 - [ ] Spawn a vehicle via a dynamic menu
+- [ ] Change pet model via a dynamic menu
+- [ ] Teleport to known locations via a dynamic menu
 
 ## Deutsch
 
@@ -49,7 +51,9 @@ Ein Verwaltungstool für ein AltV Server.
 - [ ] Bestimmte Sounds und Funktionen wie Blackout abspielen
 - [ ] Objekt Informationen anzeigen lassen
 - [ ] Fahrzeug über ein Dynamisches Menü spawnen
+- [ ] Pet Model über ein Dynamisches Menü swechseln
+- [ ] Dich zu bekannten Locations über ein Dynamisches Menü teleportieren
 
 ## Screenshots
 
-![alt text](https://i.imgur.com/SCOFtIb.png)
+![alt text](https://i.imgur.com/lk5CWrQ.png)
