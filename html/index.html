@@ -429,9 +429,13 @@
               <span>FreeCam Aktivieren</span>
             </div>
             <p id="freeCamStatus" class="status-text">FreeCam ist Deaktiviert</p>
-            <div class="button-group">
-              <button id="slowDownFreeCam" class="btn btn-primary">FreeCam Verlangsamen</button>
-              <button id="speedUpFreeCam" class="btn btn-primary">FreeCam Verschnellern</button>
+
+            <div class="slider-container">
+              <input type="range" id="freeCamSpeedSlider" min="0.1" max="10" step="0.1" value="1" />
+              <p>
+                Aktuelle Geschwindigkeit:
+                <span id="speedValue">1</span>
+              </p>
             </div>
           </div>
 
@@ -729,16 +733,53 @@
     <div id="vehiclePopup" class="popup">
       <div class="popup-content">
         <span class="close-btn">&times;</span>
-        <div class="popup-header">
-          <h5 id="vehicleCompany">Fraktion:</h5>
-          <h5 id="vehicleOwner">Inhaber:</h5>
-          <h5 id="vehicleLocation">Standort:</h5>
+
+        <div class="popup-header info-section">
+          <h5>
+            <i class="fas fa-building"></i>
+            Fraktion:
+          </h5>
+          <p id="vehicleCompany">Los Santos Police Department</p>
+
+          <h5>
+            <i class="fas fa-user"></i>
+            Inhaber:
+          </h5>
+          <p id="vehicleOwner">John Doe</p>
+
+          <h5>
+            <i class="fas fa-map-marker-alt"></i>
+            Standort:
+          </h5>
+          <p id="vehicleLocation">Vinewood Garage</p>
         </div>
+
+        <div class="input-row">
+          <input type="text" id="newLicensePlate" class="form-control" placeholder="Neues Kennzeichen" />
+          <button class="btn btn-primary" id="changeLicensePlate">Kennzeichen Ändern</button>
+        </div>
+
+        <div class="input-row">
+          <select id="garageDropdown" class="form-control">
+            <option value="garage1">Garage 1</option>
+            <option value="garage2">Garage 2</option>
+            <option value="garage3">Garage 3</option>
+          </select>
+          <button class="btn btn-primary" id="changeGarage">Garage ändern</button>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-primary" id="teleportToMe">Fahrzeug zu mir Teleportieren</button>
+          <button class="btn btn-primary" id="teleportToVehicle">Zum Fahrzeug Teleportieren</button>
+        </div>
+
         <div class="button-group">
-          <button class="btn btn-primary">Zeige auf der Karte an</button>
-          <button class="btn btn-primary">Einparken</button>
-          <button class="btn btn-primary">Fahrzeug zu mir Teleportieren</button>
-          <button class="btn btn-primary">Fahrzeug Reparieren</button>
+          <button class="btn btn-primary" id="parkVehicle">Einparken</button>
+          <button class="btn btn-primary" id="repairVehicle">Fahrzeug Reparieren</button>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" id="showOnMap">Zeige auf der Karte an</button>
         </div>
       </div>
     </div>

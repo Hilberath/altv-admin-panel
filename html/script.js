@@ -80,6 +80,108 @@ window.addEventListener("click", (event) => {
     document.querySelector(".window-container").classList.remove("blur");
   }
 });
+
+document.querySelectorAll(".player-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    const playerName = item.querySelector(".player-name").textContent;
+    const playerId = item.querySelector(".player-id").textContent.replace("ID: ", "");
+
+    document.getElementById("playerNameId").textContent = `${playerName} (ID: ${playerId})`;
+
+    document.getElementById("playerPopup").style.display = "block";
+    document.querySelector(".window-container").classList.add("blur");
+  });
+});
+
+document.querySelector(".close-btn").addEventListener("click", () => {
+  document.getElementById("playerPopup").style.display = "none";
+  document.querySelector(".window-container").classList.remove("blur");
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === document.getElementById("playerPopup")) {
+    document.getElementById("playerPopup").style.display = "none";
+    document.querySelector(".window-container").classList.remove("blur");
+  }
+});
+
+// Platzhalter für Schaltflächen in Spieler Popup
+
+// Spieler kicken
+document.querySelector(".kick").addEventListener("click", function () {
+  console.log("Spieler gekickt");
+  // Hier könnte die Funktion zum Kicken des Spielers implementiert werden
+});
+
+// Spieler bannen
+document.querySelector(".ban").addEventListener("click", function () {
+  console.log("Spieler gebannt");
+  // Hier könnte die Funktion zum Bannen des Spielers implementiert werden
+});
+
+// Zum Spieler teleportieren
+document.querySelector(".tpto").addEventListener("click", function () {
+  console.log("Zum Spieler teleportiert");
+  // Hier könnte die Funktion zum Teleportieren zum Spieler implementiert werden
+});
+
+// Spieler zu mir teleportieren
+document.querySelector(".tpme").addEventListener("click", function () {
+  console.log("Spieler zu mir teleportiert");
+  // Hier könnte die Funktion zum Teleportieren des Spielers zu mir implementiert werden
+});
+
+// Spieler zuschauen
+document.querySelector(".spectate").addEventListener("click", function () {
+  console.log("Spieler wird beobachtet");
+  // Hier könnte die Funktion zum Zuschauen des Spielers implementiert werden
+});
+
+// Spieler wiederbeleben
+document.querySelector(".revive").addEventListener("click", function () {
+  console.log("Spieler wiederbelebt");
+  // Hier könnte die Funktion zum Wiederbeleben des Spielers implementiert werden
+});
+
+// Spieler auf der Karte anzeigen
+document.querySelector(".posway").addEventListener("click", function () {
+  console.log("Spieler auf der Karte angezeigt");
+  // Hier könnte die Funktion zum Anzeigen des Spielers auf der Karte implementiert werden
+});
+
+// Fraktionsdienst aktivieren
+document.querySelector(".frakduty").addEventListener("click", function () {
+  console.log("Fraktionsdienst für Spieler aktiviert");
+  // Hier könnte die Funktion zum Aktivieren des Fraktionsdienstes für den Spieler implementiert werden
+});
+
+// Firmendienst aktivieren
+document.querySelector(".comduty").addEventListener("click", function () {
+  console.log("Firmendienst für Spieler aktiviert");
+  // Hier könnte die Funktion zum Aktivieren des Firmendienstes für den Spieler implementiert werden
+});
+
+// Fraktion setzen
+document.querySelector(".setfrak").addEventListener("click", function () {
+  const selectedFraktion = document.getElementById("fraktionDropdown").value;
+  console.log(`Fraktion für Spieler gesetzt auf: ${selectedFraktion}`);
+  // Hier könnte die Funktion zum Setzen der Fraktion für den Spieler implementiert werden
+});
+
+// Firma setzen
+document.querySelector(".setcomp").addEventListener("click", function () {
+  const selectedCompany = document.getElementById("companyDropdown").value;
+  console.log(`Firma für Spieler gesetzt auf: ${selectedCompany}`);
+  // Hier könnte die Funktion zum Setzen der Firma für den Spieler implementiert werden
+});
+
+// Item geben
+document.querySelector(".btn-secondary").addEventListener("click", function () {
+  const itemName = document.getElementById("itemName").value;
+  console.log(`Item an Spieler gegeben: ${itemName}`);
+  // Hier könnte die Funktion zum Geben eines Items an den Spieler implementiert werden
+});
+
 // ###########################################################################################
 // Fahrzeuge Script
 // ###########################################################################################
@@ -112,9 +214,9 @@ document.getElementById("searchVehicle").addEventListener("input", function () {
 // ###########################################################################################
 document.querySelectorAll(".vehicle-item").forEach((item) => {
   item.addEventListener("click", () => {
-    document.getElementById("vehicleCompany").textContent = "Fraktion:";
-    document.getElementById("vehicleOwner").textContent = "Inhaber:";
-    document.getElementById("vehicleLocation").textContent = "Standort:";
+    document.getElementById("vehicleCompany").textContent = "Testfirma";
+    document.getElementById("vehicleOwner").textContent = "Testspieler";
+    document.getElementById("vehicleLocation").textContent = "Teststandort";
 
     document.getElementById("vehiclePopup").style.display = "block";
     document.querySelector(".window-container").classList.add("blur");
@@ -133,6 +235,54 @@ window.addEventListener("click", (event) => {
   }
 });
 
+// Kennzeichen ändern
+document.getElementById("changeLicensePlate").addEventListener("click", function () {
+  const newPlate = document.getElementById("newLicensePlate").value;
+  if (newPlate) {
+    console.log(`Kennzeichen geändert zu: ${newPlate}`);
+    // Hier kannst du die Funktionalität zum Ändern des Kennzeichens implementieren
+  } else {
+    console.log("Bitte gib ein gültiges Kennzeichen ein.");
+  }
+});
+
+// Garage ändern
+document.getElementById("changeGarage").addEventListener("click", function () {
+  const selectedGarage = document.getElementById("garageDropdown").value;
+  console.log(`Garage geändert zu: ${selectedGarage}`);
+  // Hier kannst du die Funktionalität zum Ändern der Garage implementieren
+});
+
+// Teleportieren des Fahrzeugs zu dir
+document.getElementById("teleportToMe").addEventListener("click", function () {
+  console.log("Fahrzeug zu mir teleportiert");
+  // Hier kommt die Funktion für das Teleportieren des Fahrzeugs zu dir
+});
+
+// Zum Fahrzeug teleportieren
+document.getElementById("teleportToVehicle").addEventListener("click", function () {
+  console.log("Zum Fahrzeug teleportiert");
+  // Hier kommt die Funktion für das Teleportieren zum Fahrzeug
+});
+
+// Fahrzeug auf der Karte anzeigen
+document.getElementById("showOnMap").addEventListener("click", function () {
+  console.log("Fahrzeug auf der Karte angezeigt");
+  // Hier kannst du die Funktionalität zum Anzeigen auf der Karte implementieren
+});
+
+// Fahrzeug einparken
+document.getElementById("parkVehicle").addEventListener("click", function () {
+  console.log("Fahrzeug eingeparkt");
+  // Hier kannst du die Funktionalität zum Einparken des Fahrzeugs implementieren
+});
+
+// Fahrzeug reparieren
+document.getElementById("repairVehicle").addEventListener("click", function () {
+  console.log("Fahrzeug repariert");
+  // Hier kannst du die Funktionalität zum Reparieren des Fahrzeugs implementieren
+});
+
 // ###########################################################################################
 // Position Script
 // ###########################################################################################
@@ -142,11 +292,15 @@ document.getElementById("showCurrentPosition").addEventListener("change", functi
     document.getElementById("yCoord").value = "2478.514";
     document.getElementById("zCoord").value = "32.7";
     document.getElementById("rotation").value = "1.54";
+    console.log("Aktuelle Position wird angezeigt");
+    // Hier könnte die Funktion zum Anzeigen der aktuellen Position implementiert werden
   } else {
     document.getElementById("xCoord").value = "";
     document.getElementById("yCoord").value = "";
     document.getElementById("zCoord").value = "";
     document.getElementById("rotation").value = "";
+    console.log("Aktuelle Position wird ausgeblendet");
+    // Hier könnte die Funktion zum Ausblenden der aktuellen Position implementiert werden
   }
 });
 
@@ -195,8 +349,10 @@ document.getElementById("toggleVisibility").addEventListener("change", function 
 
   if (this.checked) {
     statusText.textContent = "Du bist gerade unsichtbar";
+    // Hier kommt die Funktion für aktiviert hin
   } else {
     statusText.textContent = "Du bist gerade sichtbar";
+    // Hier kommt die Funktion für deaktiviert hin
   }
 });
 
@@ -208,22 +364,42 @@ document.getElementById("toggleImmortality").addEventListener("change", function
 
   if (this.checked) {
     statusText.textContent = "Du bist gerade unsterblich";
+    // Hier kommt die Funktion für aktiviert hin
   } else {
     statusText.textContent = "Du bist gerade nicht unsterblich";
+    // Hier kommt die Funktion für deaktiviert hin
   }
 });
 
 // ###########################################################################################
 // FreeCam Script
 // ###########################################################################################
+
 document.getElementById("toggleFreeCam").addEventListener("change", function () {
   const statusText = document.getElementById("freeCamStatus");
 
   if (this.checked) {
     statusText.textContent = "FreeCam ist Aktiviert";
+    // Hier kommt die Funktion für aktiviert hin
   } else {
     statusText.textContent = "FreeCam ist Deaktiviert";
+    // Hier kommt die Funktion für deaktiviert hin
   }
+});
+
+const slider = document.getElementById("freeCamSpeedSlider");
+const speedValueDisplay = document.getElementById("speedValue");
+
+function changeFreeCamSpeed(change) {
+  let currentValue = parseFloat(slider.value);
+  currentValue = Math.max(0.1, Math.min(10, currentValue + change)); // Begrenzen auf -10 bis 10
+  slider.value = currentValue;
+  speedValueDisplay.textContent = currentValue.toFixed(1);
+}
+
+slider.addEventListener("input", function () {
+  const currentValue = this.value;
+  speedValueDisplay.textContent = currentValue;
 });
 
 // ###########################################################################################
@@ -234,8 +410,10 @@ document.getElementById("togglePlayerInfo").addEventListener("change", function 
 
   if (this.checked) {
     statusText.textContent = "Du siehst gerade die Spieler Infos";
+    // Hier kommt die Funktion für aktiviert hin
   } else {
     statusText.textContent = "Du siehst nicht die Spieler Infos";
+    // Hier kommt die Funktion für deaktiviert hin
   }
 });
 
@@ -257,6 +435,57 @@ document.getElementById("messageType").addEventListener("change", function () {
 
 document.getElementById("messageType").value = "broadcast";
 document.getElementById("broadcastMessage").style.display = "block";
+
+// Broadcast-Nachricht senden
+document.getElementById("broadcastSend").addEventListener("click", function () {
+  const messageContent = document.getElementById("broadcastInput").value.trim();
+  if (messageContent) {
+    console.log(`Broadcast gesendet: ${messageContent}`);
+    // Hier könnte die Funktion zum Senden einer Broadcast-Nachricht hinzugefügt werden
+  } else {
+    console.error("Broadcast-Nachricht darf nicht leer sein");
+  }
+});
+
+// Private Nachricht senden
+document.getElementById("privateSend").addEventListener("click", function () {
+  const playerId = document.getElementById("playerIdInput").value.trim();
+  const messageContent = document.getElementById("privateMessageInput").value.trim();
+
+  if (playerId && messageContent) {
+    console.log(`Private Nachricht an Spieler ID ${playerId} gesendet: ${messageContent}`);
+    // Hier könnte die Funktion zum Senden einer privaten Nachricht hinzugefügt werden
+  } else if (!playerId) {
+    console.error("Spieler-ID ist erforderlich, um eine private Nachricht zu senden.");
+  } else if (!messageContent) {
+    console.error("Die Nachricht darf nicht leer sein.");
+  }
+});
+
+// ###########################################################################################
+// Teleportieren Script
+// ###########################################################################################
+
+// Teleportieren zu den angegebenen Koordinaten (x, y, z)
+document.getElementById("teleportButton").addEventListener("click", function () {
+  const xCoord = document.getElementById("xCoordTeleport").value.trim();
+  const yCoord = document.getElementById("yCoordTeleport").value.trim();
+  const zCoord = document.getElementById("zCoordTeleport").value.trim();
+
+  if (xCoord && yCoord && zCoord) {
+    console.log(`Teleportieren zu Koordinaten: x=${xCoord}, y=${yCoord}, z=${zCoord}`);
+    // Hier könnte die Funktion zum Teleportieren zu den angegebenen Koordinaten hinzugefügt werden
+  } else {
+    console.error("Alle Koordinaten (x, y, z) müssen ausgefüllt sein.");
+    alert("Bitte fülle alle Koordinaten (x, y und z) aus, um zu teleportieren.");
+  }
+});
+
+// Teleportieren zum Waypoint
+document.getElementById("teleportWaypointButton").addEventListener("click", function () {
+  console.log("Teleportieren zum Waypoint");
+  // Hier könnte die Funktion zum Teleportieren zum Waypoint hinzugefügt werden
+});
 
 // ###########################################################################################
 // Alarm Script
@@ -285,8 +514,10 @@ document.getElementById("toggleObjectAttacher").addEventListener("change", funct
 
   if (this.checked) {
     statusText.textContent = "ObjectAttacher ist Aktiviert";
+    // Hier kommt die Funktion für aktiviert hin
   } else {
     statusText.textContent = "ObjectAttacher ist Deaktiviert";
+    // Hier kommt die Funktion für deaktiviert hin
   }
 });
 
@@ -1004,7 +1235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       vehicleElement.querySelector(".vehicle-name").addEventListener("click", function () {
         console.log(`Spawning vehicle: ${vehicle.model}`);
-        // Hier könnte der Code zum Spawnen des Fahrzeugs hinzugefügt werden
+        // Der Code zum Spawnen des Fahrzeugs hinzugefügen
       });
     });
   }
@@ -2092,7 +2323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       petElement.querySelector(".pet-name").addEventListener("click", function () {
         console.log(`Spawning pet: ${pet.model}`);
-        // Hier könnte der Code zum Spawnen des Fahrzeugs hinzugefügt werden
+        // Der Code zum wechseln des Ped Models hinzufügen
       });
     });
   }
@@ -2270,14 +2501,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const locationElement = document.createElement("div");
       locationElement.className = "location";
       locationElement.innerHTML = `
-        <img src="assets/teleport/models/${location.name}.webp" alt="${location.name}">
+        <img src="assets/teleport/models/${location.name}.png" alt="${location.name}">
         <div class="location-name">${location.name}</div>
       `;
       locationContainer.appendChild(locationElement);
 
       locationElement.querySelector(".location-name").addEventListener("click", function () {
         console.log(`Teleporting to location: ${location.position}`);
-        alert(`${location.position.join(", ")}`); // Test Alert zur Ausgabe der Position
+        console.log(`${location.position.join(", ")}`);
+        // Der Code zum Teleportieren hinzufügen
       });
     });
   }

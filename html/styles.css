@@ -146,7 +146,7 @@ input:checked + .slider:before {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   height: 642px;
   width: 709px;
-  overflow: hidden; /* Kein Scrollen für die ganze Sektion */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -182,16 +182,14 @@ Scrollbar DESIGN
   background-color: var(--secondary-color);
 }
 
-/* Spieler-, Fahrzeug- und Fahrzeug-Spawn-Listen scrollen */
 #content-spieler .player-list,
 #content-fahrzeuge .vehicle-list,
 #content-fahrzeug-spawnen .vehicles {
   flex-grow: 1;
   overflow-y: auto;
-  max-height: 100%; /* Maximale Höhe, damit es korrekt scrollt */
+  max-height: 100%;
 }
 
-/* Restliche existierende Scrollbar-Einstellungen beibehalten */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -222,7 +220,7 @@ POPUP DESIGN Spieler
 */
 
 #playerPopup {
-  display: none; /* Popup ist standardmäßig versteckt */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -254,7 +252,6 @@ POPUP DESIGN Spieler
   margin-bottom: 20px;
 }
 
-/* Button Row Style */
 #playerPopup .button-row {
   display: flex;
   justify-content: space-between;
@@ -266,7 +263,6 @@ POPUP DESIGN Spieler
   flex: 1;
 }
 
-/* Input Row Style */
 #playerPopup .input-row {
   display: flex;
   justify-content: space-between;
@@ -290,7 +286,6 @@ POPUP DESIGN Spieler
   box-sizing: border-box;
 }
 
-/* Input Group (Item geben) */
 #playerPopup .input-group {
   display: flex;
   gap: 10px;
@@ -316,13 +311,14 @@ POPUP DESIGN Spieler
 POPUP DESIGN Fahrzeuge
 ################################################################################
 */
+
 #vehiclePopup {
-  display: none; /* Popup ist standardmäßig versteckt */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 600px;
   background-color: var(--menu-bg-color);
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -343,37 +339,36 @@ POPUP DESIGN Fahrzeuge
   cursor: pointer;
 }
 
-#vehiclePopup .popup-header h5 i {
-  margin-right: 10px; /* Abstand zwischen Icon und Text */
-  color: var(--primary-color); /* Optional: Icon-Farbe anpassen */
-  font-size: 18px; /* Optional: Icon-Größe anpassen */
-}
-
-/* Falls du möchtest, dass die Texte und Icons linksbündig ausgerichtet sind */
-#vehiclePopup .popup-header h5 {
+#vehiclePopup .info-section h5 {
   display: flex;
   align-items: center;
+  font-size: 16px;
+  color: var(--primary-color);
 }
 
-#vehiclePopup .button-group {
+#vehiclePopup .info-section p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  color: var(--text-color);
+}
+
+#vehiclePopup .info-section h5 i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  font-size: 18px;
+}
+
+#vehiclePopup .input-row {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#vehiclePopup .button-group .btn {
-  width: 100%;
-  text-align: left;
-}
-
-#vehiclePopup .input-group {
-  display: flex;
-  gap: 10px;
-}
-
-#vehiclePopup .input-group .form-control {
+#vehiclePopup .input-row .form-control {
+  width: auto;
+  height: auto;
   flex: 1;
   padding: 10px;
   border-radius: 5px;
@@ -382,8 +377,28 @@ POPUP DESIGN Fahrzeuge
   color: var(--text-color);
 }
 
-#vehiclePopup .input-group .btn {
+#vehiclePopup .input-row .btn {
+  flex-shrink: 0;
   padding: 10px 20px;
+}
+
+#vehiclePopup .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#vehiclePopup .button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#vehiclePopup .button-group .btn,
+#vehiclePopup .button-row .btn {
+  width: 100%;
+  text-align: center;
 }
 
 /*
@@ -472,10 +487,9 @@ Fahrzeug DESIGN
   padding-right: 10px;
 }
 
-/* Styling für die vehicle-item */
 #content-fahrzeuge .vehicle-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Drei Spalten: Modell, Kennzeichen, ID */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   padding: 10px;
   margin-bottom: 5px;
@@ -490,17 +504,17 @@ Fahrzeug DESIGN
 }
 
 #content-fahrzeuge .vehicle-model {
-  text-align: left; /* Text linksbündig für Modell */
+  text-align: left;
   color: var(--text-color);
 }
 
 #content-fahrzeuge .vehicle-license {
-  text-align: center; /* Text zentriert für Kennzeichen */
+  text-align: center;
   color: var(--secondary-color);
 }
 
 #content-fahrzeuge .vehicle-id {
-  text-align: right; /* Text rechtsbündig für ID */
+  text-align: right;
   color: var(--secondary-color);
 }
 
@@ -522,11 +536,11 @@ Position DESIGN
 }
 
 #content-position .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-position .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-position .coordinates {
@@ -584,11 +598,11 @@ Unsichtbarkeit DESIGN
 }
 
 #content-unsichtbarkeit .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-unsichtbarkeit .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-unsichtbarkeit .status-text {
@@ -614,11 +628,11 @@ Unsterblich DESIGN
 }
 
 #content-unsterblich .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-unsterblich .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-unsterblich .status-text {
@@ -631,6 +645,7 @@ Unsterblich DESIGN
 FreeCam DESIGN
 ################################################################################
 */
+
 #content-freecam .switch-group {
   display: flex;
   align-items: center;
@@ -643,11 +658,11 @@ FreeCam DESIGN
 }
 
 #content-freecam .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-freecam .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-freecam .status-text {
@@ -657,17 +672,50 @@ FreeCam DESIGN
   margin-left: 20px;
 }
 
-#content-freecam .button-group {
+#content-freecam .slider-container {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
-#content-freecam .button-group .btn {
-  flex: 1;
-  text-align: center;
+#freeCamSpeedSlider {
+  width: 550px;
+  appearance: none;
+  height: 10px;
+  background: var(--primary-color);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
 }
+
+#freeCamSpeedSlider:hover {
+  opacity: 1;
+}
+
+#freeCamSpeedSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--secondary-color);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#freeCamSpeedSlider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: var(--secondary-color);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#speedValue {
+  font-size: 18px;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
 /*
 ################################################################################
 Namen Zeigen DESIGN
@@ -686,11 +734,11 @@ Namen Zeigen DESIGN
 }
 
 #content-namen-zeigen .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-namen-zeigen .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-namen-zeigen .status-text {
@@ -825,14 +873,15 @@ ObjectAttacher DESIGN
 
 #content-objectattacher .switch-group .switch {
   margin-right: 10px;
+  width: 40px;
 }
 
 #content-objectattacher .switch-group .switch .slider {
-  background-color: var(--secondary-bg-color); /* Hintergrundfarbe des Switches */
+  background-color: var(--secondary-bg-color);
 }
 
 #content-objectattacher .switch-group .switch input:checked + .slider {
-  background-color: var(--primary-color); /* Hintergrundfarbe, wenn der Switch aktiviert ist */
+  background-color: var(--primary-color);
 }
 
 #content-objectattacher .status-text {
@@ -964,7 +1013,7 @@ Petmodel ändern DESIGN
 }
 
 #content-pet-wechseln .category-dropdown {
-  width: 100%; /* Gleiche Breite wie das Suchfeld */
+  width: 100%;
   background: var(--categories-bg);
   border-radius: 10px;
 }
@@ -979,7 +1028,7 @@ Petmodel ändern DESIGN
 }
 
 #content-pet-wechseln .search-bar {
-  width: 100%; /* Gleiche Breite wie das Dropdown-Menü */
+  width: 100%;
 }
 
 #content-pet-wechseln .search-bar .form-control {
@@ -1064,7 +1113,7 @@ Location Teleport DESIGN
 }
 
 #content-location-teleport .category-dropdown {
-  width: 100%; /* Gleiche Breite wie das Suchfeld */
+  width: 100%;
   background: var(--categories-bg);
   border-radius: 10px;
 }
@@ -1079,7 +1128,7 @@ Location Teleport DESIGN
 }
 
 #content-location-teleport .search-bar {
-  width: 100%; /* Gleiche Breite wie das Dropdown-Menü */
+  width: 100%;
 }
 
 #content-location-teleport .search-bar .form-control {
