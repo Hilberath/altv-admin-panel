@@ -502,12 +502,12 @@
                 <label for="zCoordTeleport">z Koordinate:</label>
                 <input type="text" id="zCoordTeleport" class="form-control" />
               </div>
-              <button id="teleportButton" class="btn btn-primary">Teleportieren</button>
+              <button id="teleportButton" class="btn btn-secondary">Teleportieren</button>
             </div>
 
             <hr class="divider" />
             <div class="btn-group">
-              <button id="teleportWaypointButton" class="btn btn-secondary">Teleportieren zum Waypoint</button>
+              <button id="teleportWaypointButton" class="btn btn-primary">Teleportieren zum Waypoint</button>
             </div>
           </div>
 
@@ -639,6 +639,7 @@
 
         <div class="input-group">
           <select id="fraktionDropdown" class="form-control">
+            <option value="" disabled selected>-Fraktion auswählen-</option>
             <option value="fraktion1">Department of Justice</option>
             <option value="fraktion2">Los Santos Police Department</option>
             <option value="fraktion3">San Andreas Fire und Medical Department</option>
@@ -669,6 +670,7 @@
 
         <div class="input-group">
           <select id="companyDropdown" class="form-control">
+            <option value="" disabled selected>-Gewerbe auswählen-</option>
             <option value="company1">Go Kart Bahn</option>
             <option value="company2">Yellow Jack Inn</option>
             <option value="company3">Free Spot - Unicorn</option>
@@ -755,12 +757,13 @@
         </div>
 
         <div class="input-row">
-          <input type="text" id="newLicensePlate" class="form-control" placeholder="Neues Kennzeichen" />
-          <button class="btn btn-primary" id="changeLicensePlate">Kennzeichen Ändern</button>
+          <input type="text" id="newLicensePlate" class="form-control" placeholder="Neues Kennzeichen..." />
+          <button class="btn btn-primary" id="changeLicensePlate">Kennzeichen ändern</button>
         </div>
 
         <div class="input-row">
           <select id="garageDropdown" class="form-control">
+            <option value="" disabled selected>-Garage auswählen-</option>
             <option value="garage1">Garage 1</option>
             <option value="garage2">Garage 2</option>
             <option value="garage3">Garage 3</option>

@@ -105,8 +105,6 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Platzhalter für Schaltflächen in Spieler Popup
-
 // Spieler kicken
 document.querySelector(".kick").addEventListener("click", function () {
   console.log("Spieler gekickt");
@@ -525,7 +523,7 @@ document.getElementById("toggleObjectAttacher").addEventListener("change", funct
 // Fahrzeug Spawnen Script
 // ###########################################################################################
 
-const categoriesVehicle = ["Alle Kategorien", "Boote", "Werbefahrzeuge", "Kompaktwagen", "Coupés", "Zweiräder", "Einsatzfahrzeuge", "Hubschrauber", "Industrielle Fahrzeuge", "Militärfahrzeuge", "Motorräder", "Muscle-Cars", "Geländefahrzeuge", "Flugzeuge", "SUVs", "Limousinen", "Dienstfahrzeuge", "Sportwagen", "Sportklassiker", "Supersportwagen", "Anhänger", "Züge", "Nutzfahrzeuge", "Transporter", "Formel-Fahrzeuge"];
+const categoriesVehicle = ["Alle Kategorien", "Boote", "Werbefahrzeuge", "Kompaktwagen", "Coupés", "Zweiräder", "Einsatzfahrzeuge", "Hubschrauber", "Industrielle Fahrzeuge", "Militärfahrzeuge", "Motorräder", "Muscle-Cars", "Geländefahrzeuge", "Flugzeuge", "SUVs", "Limousinen", "Dienstfahrzeuge", "Sportwagen", "Sportklassiker", "Supersportwagen", "Anhänger", "Züge", "Nutzfahrzeuge", "Transporter", "Formel-Fahrzeuge", "Custom"];
 
 const vehicles = [
   { category: 1, model: "dinghy" },
@@ -2339,7 +2337,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ###########################################################################################
-// Location Teleport Script (ohne Description)
+// Location Teleport Script
 // ###########################################################################################
 
 const categoriesLocation = ["Alle Kategorien", "Staatliches", "Firmen", "Garage", "Appartments", "Sonstiges", "IPLs"];

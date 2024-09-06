@@ -17,6 +17,15 @@ Font: Lexend
   --secondary-bg-color: #131313;
   --menu-bg-color: #303030;
   --text-color: #ffffff;
+  --window-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  --content-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --window-width: 1100px;
+  --window-height: 692px;
+  --content-width: 642px;
+  --content-height: 709px;
+  --popup-player-width: 700px;
+  --popup-vehicle-width: 600px;
+  --popup-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 body {
@@ -34,13 +43,13 @@ body {
 
 .window-container {
   background-color: var(--secondary-bg-color);
-  width: 1100px;
-  height: 692px;
+  width: var(--window-width);
+  height: var(--window-height);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--window-shadow);
   position: relative;
 }
 
@@ -143,9 +152,9 @@ input:checked + .slider:before {
   background-color: var(--menu-bg-color);
   margin: 0;
   color: var(--text-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  height: 642px;
-  width: 709px;
+  box-shadow: var(--content-shadow);
+  height: var(--content-width);
+  width: var(--content-height);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -209,7 +218,7 @@ Scrollbar DESIGN
 
 /*
 ################################################################################
-POPUP DESIGN
+POPUP DESIGNS
 ################################################################################
 */
 
@@ -225,10 +234,10 @@ POPUP DESIGN Spieler
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
+  width: var(--popup-player-width);
   background-color: var(--menu-bg-color);
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--popup-box-shadow);
   z-index: 1000;
 }
 
@@ -289,6 +298,7 @@ POPUP DESIGN Spieler
 #playerPopup .input-group {
   display: flex;
   gap: 10px;
+  margin-top: 20px;
 }
 
 #playerPopup .input-group .form-control {
@@ -318,10 +328,10 @@ POPUP DESIGN Fahrzeuge
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
+  width: var(--popup-vehicle-width);
   background-color: var(--menu-bg-color);
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--popup-box-shadow);
   z-index: 1000;
 }
 
@@ -400,6 +410,11 @@ POPUP DESIGN Fahrzeuge
   width: 100%;
   text-align: center;
 }
+/*
+################################################################################
+Content DESIGN
+################################################################################
+*/
 
 /*
 ################################################################################
