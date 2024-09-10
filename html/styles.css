@@ -17,15 +17,18 @@ Font: Lexend
   --secondary-bg-color: #131313;
   --menu-bg-color: #303030;
   --text-color: #ffffff;
+  --text-color-black: #000000;
+  --font-alternate-color: #cccccc;
   --window-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
   --content-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   --window-width: 1100px;
-  --window-height: 692px;
-  --content-width: 642px;
-  --content-height: 709px;
+  --window-height: 736px;
+  --content-width: 709px;
+  --content-height: 686px;
   --popup-player-width: 700px;
-  --popup-vehicle-width: 600px;
+  --popup-vehicle-width: 675px;
   --popup-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 8px 15px rgba(6, 112, 219, 0.5);
 }
 
 body {
@@ -153,8 +156,8 @@ input:checked + .slider:before {
   margin: 0;
   color: var(--text-color);
   box-shadow: var(--content-shadow);
-  height: var(--content-width);
-  width: var(--content-height);
+  height: var(--content-height);
+  width: var(--content-width);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -396,13 +399,14 @@ POPUP DESIGN Fahrzeuge
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 #vehiclePopup .button-row {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  margin-top: 20px;
 }
 
 #vehiclePopup .button-group .btn,
@@ -410,6 +414,84 @@ POPUP DESIGN Fahrzeuge
   width: 100%;
   text-align: center;
 }
+
+/*
+################################################################################
+Popup add Vehicle
+################################################################################
+*/
+
+#newVehiclePopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--popup-vehicle-width);
+  background-color: var(--menu-bg-color);
+  border-radius: 10px;
+  box-shadow: var(--popup-box-shadow);
+  z-index: 1000;
+}
+
+#newVehiclePopup .popup-content {
+  padding: 30px 20px 20px;
+  position: relative;
+}
+
+#newVehiclePopup .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+#newVehiclePopup h3 {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+#newVehiclePopup label {
+  font-size: 14px;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+#newVehiclePopup select,
+#newVehiclePopup input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+#newVehiclePopup button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#newVehiclePopup button:hover {
+  background-color: var(--secondary-color);
+}
+
+/*
+################################################################################
+Content DESIGN
+################################################################################
+*/
+
 /*
 ################################################################################
 Content DESIGN
@@ -531,6 +613,21 @@ Fahrzeug DESIGN
 #content-fahrzeuge .vehicle-id {
   text-align: right;
   color: var(--secondary-color);
+}
+
+#content-fahrzeuge .add-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-btn:hover {
+  background-color: var(--secondary-bg-color);
 }
 
 /*
@@ -1202,4 +1299,54 @@ Location Teleport DESIGN
 #content-location-teleport .location-name:hover {
   background-color: var(--secondary-color);
   color: white;
+}
+
+/*
+################################################################################
+Item List DESIGN
+################################################################################
+*/
+
+#content-item .search-bar {
+  margin: 15px;
+}
+
+#content-item .search-bar .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+#content-item .item-list {
+  margin-top: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#content-item .item-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: var(--menu-bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+#content-item .item-item:hover {
+  background-color: var(--primary-color);
+}
+
+#content-item .item-name {
+  font-size: 16px;
+}
+
+#content-item .item-id {
+  font-size: 14px;
+  color: var(--secondary-color);
 }

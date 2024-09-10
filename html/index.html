@@ -123,6 +123,12 @@
                   Location Teleport
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link menu-item" href="#" data-target="item">
+                  <i class="fas fa-clipboard-list"></i>
+                  Item List
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -234,6 +240,7 @@
                 <option value="id">ID</option>
               </select>
               <input type="text" class="form-control" placeholder="Suchbegriff eingeben..." id="searchVehicle" />
+              <button id="addVehicleBtn" class="add-btn">+</button>
             </div>
             <div class="vehicle-list">
               <div class="vehicle-item">
@@ -597,6 +604,26 @@
 
           <!--
 ################################################################################
+        Item List
+################################################################################
+        -->
+
+          <div id="content-item" class="content-section">
+            <div class="search-bar">
+              <input type="text" class="form-control" placeholder="Itemname/ID..." id="searchItem" />
+            </div>
+            <div class="item-list">
+              <div class="item-item">
+                <span class="item-id">ID: 1</span>
+                <span class="item-name">Fisch</span>
+                <span class="item-typ">Diverse</span>
+                <span class="item-desc">Supermarkt</span>
+                <span class="item-weight">0,1 KG</span>
+              </div>
+            </div>
+          </div>
+          <!--
+################################################################################
         Container ENDE
 ################################################################################
         --></main>
@@ -739,7 +766,7 @@
         <div class="popup-header info-section">
           <h5>
             <i class="fas fa-building"></i>
-            Fraktion:
+            Fraktion/Company:
           </h5>
           <p id="vehicleCompany">Los Santos Police Department</p>
 
@@ -762,6 +789,101 @@
         </div>
 
         <div class="input-row">
+          <select id="ownerDropdown" class="form-control">
+            <option value="" disabled selected>-Inhaber auswählen-</option>
+          </select>
+          <button class="btn btn-primary" id="changeOwner">Inhaber ändern</button>
+        </div>
+
+        <div class="input-row">
+          <select id="typDropdown" class="form-control">
+            <option value="" disabled selected>-Fahrzeug Typ auswählen-</option>
+            <option value="0">0 - Char</option>
+            <option value="1">1 - Faction</option>
+            <option value="2">2 -</option>
+            <option value="3">3 - Company</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button class="btn btn-primary" id="changeTyp">Type ändern</button>
+        </div>
+
+        <div class="input-row">
+          <select id="factionDropdown" class="form-control">
+            <option value="" disabled selected>-Company/Faction auswählen-</option>
+            <option value="fraktion1">Department of Justice</option>
+            <option value="fraktion2">Los Santos Police Department</option>
+            <option value="fraktion3">San Andreas Fire und Medical Department</option>
+            <option value="fraktion4">Auto Club Los Santos</option>
+            <option value="fraktion5">TAXI</option>
+            <option value="fraktion6">Department of Homeland Security</option>
+            <option value="fraktion7">Maze Bank</option>
+            <option value="fraktion8">Weazel News</option>
+            <option value="fraktion9">Stadtverwaltung</option>
+            <option value="fraktion10">Crastenburg</option>
+            <option value="fraktion11">Los Santos Sheriff Department</option>
+            <option value="fraktion12">Einreiseamt</option>
+            <option value="fraktion13">Racing</option>
+            <option value="fraktion14">Gruppe 6</option>
+            <option value="fraktion15">Los Santos Park Ranger</option>
+            <option value="fraktion16">San Andreas Recycling</option>
+            <option value="fraktion17">SA Constructions and Ressources</option>
+            <option value="fraktion18">Bar Association</option>
+            <option value="fraktion19">Los Santos Driving Academy</option>
+            <option value="fraktion20">Department of Security</option>
+            <option value="fraktion21">Los Santos Estate Dynasty</option>
+            <option value="fraktion22">Home Vision</option>
+            <option value="fraktion23">Paleto Bay Veterinary Clinic</option>
+            <option value="fraktion24">Department of Corrections</option>
+            <option value="company1">Go Kart Bahn</option>
+            <option value="company2">Yellow Jack Inn</option>
+            <option value="company3">Free Spot - Unicorn</option>
+            <option value="company4">Sunrise Autos</option>
+            <option value="company5">PDM / Sunrise Cars</option>
+            <option value="company6">Blaine County Motorcycles</option>
+            <option value="company7">RedLine Performance</option>
+            <option value="company8">DreamInk Tattoos</option>
+            <option value="company9">Waffenhändler</option>
+            <option value="company10">Inked Skin</option>
+            <option value="company11">Dönerstube</option>
+            <option value="company12">Tequi - La - La</option>
+            <option value="company13">The Brians</option>
+            <option value="company14">San Andreas Motors</option>
+            <option value="company15">Irish Pub</option>
+            <option value="company16">Weazel News</option>
+            <option value="company17">Poseidon</option>
+            <option value="company18">Benny´s Motor Works</option>
+            <option value="company19">Teahead</option>
+            <option value="company20">San Andreas Racing</option>
+            <option value="company21">BOAT HUB</option>
+            <option value="company22">Free Spot - Kanzlei</option>
+            <option value="company23">Generation X Club</option>
+            <option value="company24">Porter Brewery</option>
+            <option value="company25">Möbelland</option>
+            <option value="company26">Los Santos Shelter</option>
+            <option value="company27">Adventure Explorer</option>
+            <option value="company28">Lasertag</option>
+            <option value="company29">Los Santos Volunteer Fire Department</option>
+            <option value="company30">Bernard Hausmeister Service</option>
+            <option value="company31">SNEAKZ</option>
+            <option value="company32">Jennys Cigar</option>
+            <option value="company33">Design Manufactur</option>
+            <option value="company34">Lomann Legal Consulting</option>
+            <option value="company35">Sabores de Mexico</option>
+            <option value="company36">SheNails</option>
+            <option value="company37">Soundfox Tonstudio</option>
+            <option value="company38">MM Cars</option>
+            <option value="company39">Underground Tuning</option>
+            <option value="company40">Gentry Manor Hotel</option>
+            <option value="company41">Rechtsanwalt Nightingale</option>
+            <option value="company42">New Horizon Practice</option>
+            <option value="company43">Veterinary Clinic</option>
+            <option value="company44">Celestial Holding Group</option>
+          </select>
+          <button class="btn btn-primary" id="changeCompany">Company/Faction ändern</button>
+        </div>
+
+        <div class="input-row">
           <select id="garageDropdown" class="form-control">
             <option value="" disabled selected>-Garage auswählen-</option>
             <option value="garage1">Garage 1</option>
@@ -778,6 +900,9 @@
 
         <div class="button-group">
           <button class="btn btn-primary" id="parkVehicle">Einparken</button>
+        </div>
+
+        <div class="button-group">
           <button class="btn btn-primary" id="repairVehicle">Fahrzeug Reparieren</button>
         </div>
 
@@ -786,7 +911,788 @@
         </div>
       </div>
     </div>
+    <!--
+################################################################################
+        Popup Add New Vehicle
+################################################################################
+        -->
+    <div id="newVehiclePopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" id="closePopup">&times;</span>
+        <h3>Neues Fahrzeug hinzufügen</h3>
+        <label for="vehicleType">Fahrzeugtyp</label>
+        <select id="newVehicleType">
+          <option value="" disabled selected>-Fahrzeug auswählen-</option>
+          <option value="dinghy">Dinghy</option>
+          <option value="dinghy2">Dinghy2</option>
+          <option value="dinghy3">Dinghy3</option>
+          <option value="dinghy4">Dinghy4</option>
+          <option value="jetmax">Jetmax</option>
+          <option value="marquis">Marquis</option>
+          <option value="seashark">Seashark</option>
+          <option value="seashark2">Seashark2</option>
+          <option value="seashark3">Seashark3</option>
+          <option value="speeder">Speeder</option>
+          <option value="speeder2">Speeder2</option>
+          <option value="squalo">Squalo</option>
+          <option value="submersible">Submersible</option>
+          <option value="submersible2">Submersible2</option>
+          <option value="suntrap">Suntrap</option>
+          <option value="toro">Toro</option>
+          <option value="toro2">Toro2</option>
+          <option value="tropic">Tropic</option>
+          <option value="tropic2">Tropic2</option>
+          <option value="tug">Tug</option>
+          <option value="benson">Benson</option>
+          <option value="biff">Biff</option>
+          <option value="cerberus">Cerberus</option>
+          <option value="cerberus2">Cerberus2</option>
+          <option value="cerberus3">Cerberus3</option>
+          <option value="hauler">Hauler</option>
+          <option value="hauler2">Hauler2</option>
+          <option value="mule">Mule</option>
+          <option value="mule2">Mule2</option>
+          <option value="mule3">Mule3</option>
+          <option value="mule4">Mule4</option>
+          <option value="packer">Packer</option>
+          <option value="phantom">Phantom</option>
+          <option value="phantom2">Phantom2</option>
+          <option value="phantom3">Phantom3</option>
+          <option value="pounder">Pounder</option>
+          <option value="pounder2">Pounder2</option>
+          <option value="stockade">Stockade</option>
+          <option value="stockade3">Stockade3</option>
+          <option value="terbyte">Terbyte</option>
+          <option value="asbo">Asbo</option>
+          <option value="blista">Blista</option>
+          <option value="brioso">Brioso</option>
+          <option value="dilettante">Dilettante</option>
+          <option value="dilettante2">Dilettante2</option>
+          <option value="issi2">Issi2</option>
+          <option value="issi3">Issi3</option>
+          <option value="issi4">Issi4</option>
+          <option value="issi5">Issi5</option>
+          <option value="issi6">Issi6</option>
+          <option value="kanjo">Kanjo</option>
+          <option value="panto">Panto</option>
+          <option value="prairie">Prairie</option>
+          <option value="rhapsody">Rhapsody</option>
+          <option value="cogcabrio">Cogcabrio</option>
+          <option value="exemplar">Exemplar</option>
+          <option value="f620">F620</option>
+          <option value="felon">Felon</option>
+          <option value="felon2">Felon2</option>
+          <option value="jackal">Jackal</option>
+          <option value="oracle">Oracle</option>
+          <option value="oracle2">Oracle2</option>
+          <option value="sentinel">Sentinel</option>
+          <option value="sentinel2">Sentinel2</option>
+          <option value="windsor">Windsor</option>
+          <option value="windsor2">Windsor2</option>
+          <option value="zion">Zion</option>
+          <option value="zion2">Zion2</option>
+          <option value="bmx">BMX</option>
+          <option value="cruiser">Cruiser</option>
+          <option value="fixter">Fixter</option>
+          <option value="scorcher">Scorcher</option>
+          <option value="tribike">Tribike</option>
+          <option value="tribike2">Tribike2</option>
+          <option value="tribike3">Tribike3</option>
+          <option value="ambulance">Ambulance</option>
+          <option value="fbi">FBI</option>
+          <option value="fbi2">FBI2</option>
+          <option value="firetruk">Firetruk</option>
+          <option value="lguard">LGuard</option>
+          <option value="pbus">PBus</option>
+          <option value="police">Police</option>
+          <option value="police2">Police2</option>
+          <option value="police3">Police3</option>
+          <option value="police4">Police4</option>
+          <option value="policeb">PoliceB</option>
+          <option value="polmav">PolMav</option>
+          <option value="policeold1">PoliceOld1</option>
+          <option value="policeold2">PoliceOld2</option>
+          <option value="policet">PoliceT</option>
+          <option value="pranger">Pranger</option>
+          <option value="predator">Predator</option>
+          <option value="riot">Riot</option>
+          <option value="riot2">Riot2</option>
+          <option value="sheriff">Sheriff</option>
+          <option value="sheriff2">Sheriff2</option>
+          <option value="akula">Akula</option>
+          <option value="annihilator">Annihilator</option>
+          <option value="buzzard">Buzzard</option>
+          <option value="buzzard2">Buzzard2</option>
+          <option value="cargobob">Cargobob</option>
+          <option value="cargobob2">Cargobob2</option>
+          <option value="cargobob3">Cargobob3</option>
+          <option value="cargobob4">Cargobob4</option>
+          <option value="frogger">Frogger</option>
+          <option value="frogger2">Frogger2</option>
+          <option value="havok">Havok</option>
+          <option value="hunter">Hunter</option>
+          <option value="maverick">Maverick</option>
+          <option value="savage">Savage</option>
+          <option value="seasparrow">Seasparrow</option>
+          <option value="skylift">Skylift</option>
+          <option value="supervolito">Supervolito</option>
+          <option value="supervolito2">Supervolito2</option>
+          <option value="swift">Swift</option>
+          <option value="swift2">Swift2</option>
+          <option value="valkyrie">Valkyrie</option>
+          <option value="valkyrie2">Valkyrie2</option>
+          <option value="volatus">Volatus</option>
+          <option value="bulldozer">Bulldozer</option>
+          <option value="cutter">Cutter</option>
+          <option value="dump">Dump</option>
+          <option value="flatbed">Flatbed</option>
+          <option value="guardian">Guardian</option>
+          <option value="handler">Handler</option>
+          <option value="mixer">Mixer</option>
+          <option value="mixer2">Mixer2</option>
+          <option value="rubble">Rubble</option>
+          <option value="tiptruck">Tiptruck</option>
+          <option value="tiptruck2">Tiptruck2</option>
+          <option value="apc">APC</option>
+          <option value="barracks">Barracks</option>
+          <option value="barracks2">Barracks2</option>
+          <option value="barracks3">Barracks3</option>
+          <option value="barrage">Barrage</option>
+          <option value="chernobog">Chernobog</option>
+          <option value="crusader">Crusader</option>
+          <option value="halftrack">Halftrack</option>
+          <option value="khanjali">Khanjali</option>
+          <option value="minitank">Minitank</option>
+          <option value="rhino">Rhino</option>
+          <option value="scarab">Scarab</option>
+          <option value="scarab2">Scarab2</option>
+          <option value="scarab3">Scarab3</option>
+          <option value="thruster">Thruster</option>
+          <option value="trailersmall2">TrailerSmall2</option>
+          <option value="akuma">Akuma</option>
+          <option value="avarus">Avarus</option>
+          <option value="bagger">Bagger</option>
+          <option value="bati">Bati</option>
+          <option value="bati2">Bati2</option>
+          <option value="bf400">BF400</option>
+          <option value="carbonrs">CarbonRS</option>
+          <option value="chimera">Chimera</option>
+          <option value="cliffhanger">Cliffhanger</option>
+          <option value="daemon">Daemon</option>
+          <option value="daemon2">Daemon2</option>
+          <option value="defiler">Defiler</option>
+          <option value="deathbike">Deathbike</option>
+          <option value="deathbike2">Deathbike2</option>
+          <option value="deathbike3">Deathbike3</option>
+          <option value="diablous">Diablous</option>
+          <option value="diablous2">Diablous2</option>
+          <option value="double">Double</option>
+          <option value="enduro">Enduro</option>
+          <option value="esskey">Esskey</option>
+          <option value="faggio">Faggio</option>
+          <option value="faggio2">Faggio2</option>
+          <option value="faggio3">Faggio3</option>
+          <option value="fcr">FCR</option>
+          <option value="fcr2">FCR2</option>
+          <option value="gargoyle">Gargoyle</option>
+          <option value="hakuchou">Hakuchou</option>
+          <option value="hakuchou2">Hakuchou2</option>
+          <option value="hexer">Hexer</option>
+          <option value="innovation">Innovation</option>
+          <option value="lectro">Lectro</option>
+          <option value="manchez">Manchez</option>
+          <option value="nemesis">Nemesis</option>
+          <option value="nightblade">Nightblade</option>
+          <option value="oppressor">Oppressor</option>
+          <option value="oppressor2">Oppressor2</option>
+          <option value="pcj">PCJ</option>
+          <option value="ratbike">Ratbike</option>
+          <option value="ruffian">Ruffian</option>
+          <option value="rrocket">RRocket</option>
+          <option value="sanchez2">Sanchez2</option>
+          <option value="sanctus">Sanctus</option>
+          <option value="shotaro">Shotaro</option>
+          <option value="sovereign">Sovereign</option>
+          <option value="stryder">Stryder</option>
+          <option value="thrust">Thrust</option>
+          <option value="vader">Vader</option>
+          <option value="vindicator">Vindicator</option>
+          <option value="vortex">Vortex</option>
+          <option value="wolfsbane">Wolfsbane</option>
+          <option value="zombiea">ZombieA</option>
+          <option value="zombieb">ZombieB</option>
+          <option value="blade">Blade</option>
+          <option value="buccaneer">Buccaneer</option>
+          <option value="buccaneer2">Buccaneer2</option>
+          <option value="chino">Chino</option>
+          <option value="chino2">Chino2</option>
+          <option value="clique">Clique</option>
+          <option value="coquette3">Coquette3</option>
+          <option value="deviant">Deviant</option>
+          <option value="dominator">Dominator</option>
+          <option value="dominator2">Dominator2</option>
+          <option value="dominator3">Dominator3</option>
+          <option value="dominator4">Dominator4</option>
+          <option value="dominator5">Dominator5</option>
+          <option value="dominator6">Dominator6</option>
+          <option value="dukes">Dukes</option>
+          <option value="dukes2">Dukes2</option>
+          <option value="faction">Faction</option>
+          <option value="faction2">Faction2</option>
+          <option value="faction3">Faction3</option>
+          <option value="gauntlet">Gauntlet</option>
+          <option value="gauntlet2">Gauntlet2</option>
+          <option value="gauntlet3">Gauntlet3</option>
+          <option value="gauntlet4">Gauntlet4</option>
+          <option value="hermes">Hermes</option>
+          <option value="hotknife">Hotknife</option>
+          <option value="impaler">Impaler</option>
+          <option value="impaler2">Impaler2</option>
+          <option value="impaler3">Impaler3</option>
+          <option value="impaler4">Impaler4</option>
+          <option value="imperator">Imperator</option>
+          <option value="imperator2">Imperator2</option>
+          <option value="imperator3">Imperator3</option>
+          <option value="lurcher">Lurcher</option>
+          <option value="moonbeam">Moonbeam</option>
+          <option value="moonbeam2">Moonbeam2</option>
+          <option value="nightshade">Nightshade</option>
+          <option value="peyote2">Peyote2</option>
+          <option value="phoenix">Phoenix</option>
+          <option value="picador">Picador</option>
+          <option value="ratloader">Ratloader</option>
+          <option value="ratloader2">Ratloader2</option>
+          <option value="ruiner">Ruiner</option>
+          <option value="ruiner2">Ruiner2</option>
+          <option value="ruiner3">Ruiner3</option>
+          <option value="sabregt">SabreGT</option>
+          <option value="sabregt2">SabreGT2</option>
+          <option value="slamvan">Slamvan</option>
+          <option value="slamvan2">Slamvan2</option>
+          <option value="slamvan3">Slamvan3</option>
+          <option value="slamvan4">Slamvan4</option>
+          <option value="slamvan5">Slamvan5</option>
+          <option value="slamvan6">Slamvan6</option>
+          <option value="stalion">Stalion</option>
+          <option value="stalion2">Stalion2</option>
+          <option value="tampa">Tampa</option>
+          <option value="tampa3">Tampa3</option>
+          <option value="tulip">Tulip</option>
+          <option value="vamos">Vamos</option>
+          <option value="vigero">Vigero</option>
+          <option value="virgo">Virgo</option>
+          <option value="virgo2">Virgo2</option>
+          <option value="virgo3">Virgo3</option>
+          <option value="voodoo">Voodoo</option>
+          <option value="voodoo2">Voodoo2</option>
+          <option value="yosemite">Yosemite</option>
+          <option value="yosemite2">Yosemite2</option>
+          <option value="bfinjection">BFinjection</option>
+          <option value="bifta">Bifta</option>
+          <option value="blazer">Blazer</option>
+          <option value="blazer2">Blazer2</option>
+          <option value="blazer3">Blazer3</option>
+          <option value="blazer4">Blazer4</option>
+          <option value="blazer5">Blazer5</option>
+          <option value="bodhi2">Bodhi2</option>
+          <option value="brawler">Brawler</option>
+          <option value="bruiser">Bruiser</option>
+          <option value="bruiser2">Bruiser2</option>
+          <option value="bruiser3">Bruiser3</option>
+          <option value="caracara2">Caracara2</option>
+          <option value="dloader">DLoader</option>
+          <option value="dubsta3">Dubsta3</option>
+          <option value="dune">Dune</option>
+          <option value="dune2">Dune2</option>
+          <option value="dune3">Dune3</option>
+          <option value="dune4">Dune4</option>
+          <option value="dune5">Dune5</option>
+          <option value="everon">Everon</option>
+          <option value="freecrawler">Freecrawler</option>
+          <option value="hellion">Hellion</option>
+          <option value="insurgent">Insurgent</option>
+          <option value="insurgent2">Insurgent2</option>
+          <option value="insurgent3">Insurgent3</option>
+          <option value="kalahari">Kalahari</option>
+          <option value="marshall">Marshall</option>
+          <option value="mesa3">Mesa3</option>
+          <option value="monster">Monster</option>
+          <option value="monster3">Monster3</option>
+          <option value="monster4">Monster4</option>
+          <option value="monster5">Monster5</option>
+          <option value="menacer">Menacer</option>
+          <option value="nightshark">Nightshark</option>
+          <option value="outlaw">Outlaw</option>
+          <option value="rancherxl">RancherXL</option>
+          <option value="rancherxl2">RancherXL2</option>
+          <option value="rebel">Rebel</option>
+          <option value="rebel2">Rebel2</option>
+          <option value="rcbandito">RCBandito</option>
+          <option value="riata">Riata</option>
+          <option value="sandking">Sandking</option>
+          <option value="sandking2">Sandking2</option>
+          <option value="technical">Technical</option>
+          <option value="technical2">Technical2</option>
+          <option value="technical3">Technical3</option>
+          <option value="trophytruck">TrophyTruck</option>
+          <option value="trophytruck2">TrophyTruck2</option>
+          <option value="vagrant">Vagrant</option>
+          <option value="zhaba">Zhaba</option>
+          <option value="alphaz1">AlphaZ1</option>
+          <option value="avenger">Avenger</option>
+          <option value="besra">Besra</option>
+          <option value="blimp">Blimp</option>
+          <option value="blimp2">Blimp2</option>
+          <option value="blimp3">Blimp3</option>
+          <option value="bombushka">Bombushka</option>
+          <option value="cargoplane">Cargoplane</option>
+          <option value="cuban800">Cuban800</option>
+          <option value="dodo">Dodo</option>
+          <option value="duster">Duster</option>
+          <option value="howard">Howard</option>
+          <option value="hydra">Hydra</option>
+          <option value="jet">Jet</option>
+          <option value="lazer">Lazer</option>
+          <option value="luxor">Luxor</option>
+          <option value="luxor2">Luxor2</option>
+          <option value="mammatus">Mammatus</option>
+          <option value="microlight">Microlight</option>
+          <option value="miljet">Miljet</option>
+          <option value="mogul">Mogul</option>
+          <option value="molotok">Molotok</option>
+          <option value="nimbus">Nimbus</option>
+          <option value="nokota">Nokota</option>
+          <option value="pyro">Pyro</option>
+          <option value="rogue">Rogue</option>
+          <option value="seabreeze">Seabreeze</option>
+          <option value="shamal">Shamal</option>
+          <option value="starling">Starling</option>
+          <option value="strikeforce">Strikeforce</option>
+          <option value="stunt">Stunt</option>
+          <option value="titan">Titan</option>
+          <option value="tula">Tula</option>
+          <option value="velum">Velum</option>
+          <option value="velum2">Velum2</option>
+          <option value="vestra">Vestra</option>
+          <option value="volatol">Volatol</option>
+          <option value="baller">Baller</option>
+          <option value="baller2">Baller2</option>
+          <option value="baller3">Baller3</option>
+          <option value="baller4">Baller4</option>
+          <option value="baller5">Baller5</option>
+          <option value="baller6">Baller6</option>
+          <option value="bjxl">BJXL</option>
+          <option value="cavalcade">Cavalcade</option>
+          <option value="cavalcade2">Cavalcade2</option>
+          <option value="contender">Contender</option>
+          <option value="dubsta">Dubsta</option>
+          <option value="dubsta2">Dubsta2</option>
+          <option value="fq2">FQ2</option>
+          <option value="granger">Granger</option>
+          <option value="gresley">Gresley</option>
+          <option value="habanero">Habanero</option>
+          <option value="huntley">Huntley</option>
+          <option value="landstalker">Landstalker</option>
+          <option value="mesa">Mesa</option>
+          <option value="mesa2">Mesa2</option>
+          <option value="novak">Novak</option>
+          <option value="patriot">Patriot</option>
+          <option value="patriot2">Patriot2</option>
+          <option value="radi">Radi</option>
+          <option value="rebla">Rebla</option>
+          <option value="rocoto">Rocoto</option>
+          <option value="seminole">Seminole</option>
+          <option value="serrano">Serrano</option>
+          <option value="toros">Toros</option>
+          <option value="xls">XLS</option>
+          <option value="xls2">XLS2</option>
+          <option value="asea">Asea</option>
+          <option value="asea2">Asea2</option>
+          <option value="asterope">Asterope</option>
+          <option value="cog55">Cog55</option>
+          <option value="cog552">Cog552</option>
+          <option value="cognoscenti">Cognoscenti</option>
+          <option value="cognoscenti2">Cognoscenti2</option>
+          <option value="emperor">Emperor</option>
+          <option value="emperor2">Emperor2</option>
+          <option value="emperor3">Emperor3</option>
+          <option value="fugitive">Fugitive</option>
+          <option value="glendale">Glendale</option>
+          <option value="ingot">Ingot</option>
+          <option value="intruder">Intruder</option>
+          <option value="limo2">Limo2</option>
+          <option value="premier">Premier</option>
+          <option value="primo">Primo</option>
+          <option value="primo2">Primo2</option>
+          <option value="regina">Regina</option>
+          <option value="romero">Romero</option>
+          <option value="schafter2">Schafter2</option>
+          <option value="schafter5">Schafter5</option>
+          <option value="schafter6">Schafter6</option>
+          <option value="stafford">Stafford</option>
+          <option value="stanier">Stanier</option>
+          <option value="stratum">Stratum</option>
+          <option value="stretch">Stretch</option>
+          <option value="superd">SuperD</option>
+          <option value="surge">Surge</option>
+          <option value="tailgater">Tailgater</option>
+          <option value="warrener">Warrener</option>
+          <option value="washington">Washington</option>
+          <option value="airbus">Airbus</option>
+          <option value="brickade">Brickade</option>
+          <option value="bus">Bus</option>
+          <option value="coach">Coach</option>
+          <option value="pbus2">PBus2</option>
+          <option value="rallytruck">RallyTruck</option>
+          <option value="rentalbus">RentalBus</option>
+          <option value="taxi">Taxi</option>
+          <option value="tourbus">TourBus</option>
+          <option value="trash">Trash</option>
+          <option value="trash2">Trash2</option>
+          <option value="wastelander">Wastelander</option>
+          <option value="alpha">Alpha</option>
+          <option value="banshee">Banshee</option>
+          <option value="bestiagts">BestiaGTS</option>
+          <option value="blista2">Blista2</option>
+          <option value="blista3">Blista3</option>
+          <option value="buffalo">Buffalo</option>
+          <option value="buffalo2">Buffalo2</option>
+          <option value="buffalo3">Buffalo3</option>
+          <option value="carbonizzare">Carbonizzare</option>
+          <option value="comet2">Comet2</option>
+          <option value="comet3">Comet3</option>
+          <option value="comet4">Comet4</option>
+          <option value="coquette">Coquette</option>
+          <option value="drafter">Drafter</option>
+          <option value="dynasty">Dynasty</option>
+          <option value="deveste">Deveste</option>
+          <option value="elegy">Elegy</option>
+          <option value="elegy2">Elegy2</option>
+          <option value="feltzer2">Feltzer2</option>
+          <option value="furoregt">FuroreGT</option>
+          <option value="fusilade">Fusilade</option>
+          <option value="futo">Futo</option>
+          <option value="hotring">Hotring</option>
+          <option value="issi7">Issi7</option>
+          <option value="imorgon">Imorgon</option>
+          <option value="infernus2">Infernus2</option>
+          <option value="italigto">ItaliGTO</option>
+          <option value="jugular">Jugular</option>
+          <option value="jester">Jester</option>
+          <option value="jester2">Jester2</option>
+          <option value="khamelion">Khamelion</option>
+          <option value="komoda">Komoda</option>
+          <option value="kuruma">Kuruma</option>
+          <option value="kuruma2">Kuruma2</option>
+          <option value="locust">Locust</option>
+          <option value="lynx">Lynx</option>
+          <option value="massacro">Massacro</option>
+          <option value="massacro2">Massacro2</option>
+          <option value="neo">Neo</option>
+          <option value="neon">Neon</option>
+          <option value="ninef">NineF</option>
+          <option value="ninef2">NineF2</option>
+          <option value="omnis">Omnis</option>
+          <option value="paragon">Paragon</option>
+          <option value="paragon2">Paragon2</option>
+          <option value="pariah">Pariah</option>
+          <option value="penumbra">Penumbra</option>
+          <option value="raiden">Raiden</option>
+          <option value="rapidgt">RapidGT</option>
+          <option value="rapidgt2">RapidGT2</option>
+          <option value="raptor">Raptor</option>
+          <option value="revolter">Revolter</option>
+          <option value="ruston">Ruston</option>
+          <option value="schafter3">Schafter3</option>
+          <option value="schafter4">Schafter4</option>
+          <option value="schafter5">Schafter5</option>
+          <option value="schafter6">Schafter6</option>
+          <option value="schlagen">Schlagen</option>
+          <option value="schwarzer">Schwarzer</option>
+          <option value="sentinel3">Sentinel3</option>
+          <option value="seven70">Seven70</option>
+          <option value="specter">Specter</option>
+          <option value="specter2">Specter2</option>
+          <option value="streiter">Streiter</option>
+          <option value="sugoi">Sugoi</option>
+          <option value="sultan">Sultan</option>
+          <option value="sultan2">Sultan2</option>
+          <option value="surano">Surano</option>
+          <option value="tampa2">Tampa2</option>
+          <option value="tropos">Tropos</option>
+          <option value="verlierer2">Verlierer2</option>
+          <option value="vstr">VSTR</option>
+          <option value="zr380">ZR380</option>
+          <option value="zr3802">ZR3802</option>
+          <option value="zr3803">ZR3803</option>
+          <option value="ardent">Ardent</option>
+          <option value="btype">BType</option>
+          <option value="btype2">BType2</option>
+          <option value="btype3">BType3</option>
+          <option value="casco">Casco</option>
+          <option value="cheetah2">Cheetah2</option>
+          <option value="coquette2">Coquette2</option>
+          <option value="deluxo">Deluxo</option>
+          <option value="dynasty">Dynasty</option>
+          <option value="feltzer3">Feltzer3</option>
+          <option value="gt500">GT500</option>
+          <option value="infernus2">Infernus2</option>
+          <option value="jb700">JB700</option>
+          <option value="jb7002">JB7002</option>
+          <option value="mamba">Mamba</option>
+          <option value="manana">Manana</option>
+          <option value="monroe">Monroe</option>
+          <option value="nebula">Nebula</option>
+          <option value="peyote">Peyote</option>
+          <option value="pigalle">Pigalle</option>
+          <option value="rapidgt3">RapidGT3</option>
+          <option value="retinue">Retinue</option>
+          <option value="retinue2">Retinue2</option>
+          <option value="savestra">Savestra</option>
+          <option value="stinger">Stinger</option>
+          <option value="stingergt">StingerGT</option>
+          <option value="stromberg">Stromberg</option>
+          <option value="swinger">Swinger</option>
+          <option value="torero">Torero</option>
+          <option value="tornado">Tornado</option>
+          <option value="tornado2">Tornado2</option>
+          <option value="tornado3">Tornado3</option>
+          <option value="tornado4">Tornado4</option>
+          <option value="tornado5">Tornado5</option>
+          <option value="tornado6">Tornado6</option>
+          <option value="turismo2">Turismo2</option>
+          <option value="viseris">Viseris</option>
+          <option value="ztype">ZType</option>
+          <option value="zion3">Zion3</option>
+          <option value="cheburek">Cheburek</option>
+          <option value="adder">Adder</option>
+          <option value="autarch">Autarch</option>
+          <option value="banshee2">Banshee2</option>
+          <option value="bullet">Bullet</option>
+          <option value="cheetah">Cheetah</option>
+          <option value="cyclone">Cyclone</option>
+          <option value="entityxf">EntityXF</option>
+          <option value="emerus">Emerus</option>
+          <option value="fmj">FMJ</option>
+          <option value="furia">Furia</option>
+          <option value="gp1">GP1</option>
+          <option value="infernus">Infernus</option>
+          <option value="italigtb">ItaliGTB</option>
+          <option value="italigtb2">ItaliGTB2</option>
+          <option value="krieger">Krieger</option>
+          <option value="le7b">LE7B</option>
+          <option value="nero">Nero</option>
+          <option value="nero2">Nero2</option>
+          <option value="osiris">Osiris</option>
+          <option value="penetrator">Penetrator</option>
+          <option value="pfister811">Pfister811</option>
+          <option value="prototipo">Prototipo</option>
+          <option value="reaper">Reaper</option>
+          <option value="s80">S80</option>
+          <option value="sc1">SC1</option>
+          <option value="scramjet">Scramjet</option>
+          <option value="sheava">Sheava</option>
+          <option value="sultanrs">SultanRS</option>
+          <option value="t20">T20</option>
+          <option value="tempesta">Tempesta</option>
+          <option value="tezeract">Tezeract</option>
+          <option value="thrax">Thrax</option>
+          <option value="turismor">TurismoR</option>
+          <option value="tyrus">Tyrus</option>
+          <option value="vacca">Vacca</option>
+          <option value="vagner">Vagner</option>
+          <option value="vigilante">Vigilante</option>
+          <option value="visione">Visione</option>
+          <option value="voltic">Voltic</option>
+          <option value="voltic2">Voltic2</option>
+          <option value="xa21">XA21</option>
+          <option value="zentorno">Zentorno</option>
+          <option value="zorrusso">Zorrusso</option>
+          <option value="armytanker">ArmyTanker</option>
+          <option value="armytrailer2">ArmyTrailer2</option>
+          <option value="baletrailer">BaleTrailer</option>
+          <option value="boattrailer">BoatTrailer</option>
+          <option value="cablecar">CableCar</option>
+          <option value="docktrailer">DockTrailer</option>
+          <option value="graintrailer">GrainTrailer</option>
+          <option value="proptrailer">PropTrailer</option>
+          <option value="raketrailer">RakeTrailer</option>
+          <option value="tr2">TR2</option>
+          <option value="tr3">TR3</option>
+          <option value="tr4">TR4</option>
+          <option value="trflat">TRFlat</option>
+          <option value="tvtrailer">TVTrailer</option>
+          <option value="tanker">Tanker</option>
+          <option value="tanker2">Tanker2</option>
+          <option value="trailerlogs">TrailerLogs</option>
+          <option value="trailersmall">TrailerSmall</option>
+          <option value="trailers">Trailers</option>
+          <option value="trailers2">Trailers2</option>
+          <option value="trailers3">Trailers3</option>
+          <option value="freight">Freight</option>
+          <option value="freightcar">FreightCar</option>
+          <option value="freightcont1">FreightCont1</option>
+          <option value="freightcont2">FreightCont2</option>
+          <option value="freightgrain">FreightGrain</option>
+          <option value="airtug">AirTug</option>
+          <option value="caddy">Caddy</option>
+          <option value="caddy2">Caddy2</option>
+          <option value="caddy3">Caddy3</option>
+          <option value="docktug">DockTug</option>
+          <option value="forklift">Forklift</option>
+          <option value="mower">Mower</option>
+          <option value="ripley">Ripley</option>
+          <option value="sadler">Sadler</option>
+          <option value="sadler2">Sadler2</option>
+          <option value="scrap">Scrap</option>
+          <option value="towtruck">TowTruck</option>
+          <option value="towtruck2">TowTruck2</option>
+          <option value="tractor">Tractor</option>
+          <option value="tractor2">Tractor2</option>
+          <option value="tractor3">Tractor3</option>
+          <option value="utillitruck">Utillitruck</option>
+          <option value="utillitruck2">Utillitruck2</option>
+          <option value="utillitruck3">Utillitruck3</option>
+          <option value="bison">Bison</option>
+          <option value="bison2">Bison2</option>
+          <option value="bison3">Bison3</option>
+          <option value="bobcatxl">BobcatXL</option>
+          <option value="boxville">Boxville</option>
+          <option value="boxville2">Boxville2</option>
+          <option value="boxville3">Boxville3</option>
+          <option value="boxville4">Boxville4</option>
+          <option value="boxville5">Boxville5</option>
+          <option value="burrito">Burrito</option>
+          <option value="burrito2">Burrito2</option>
+          <option value="burrito3">Burrito3</option>
+          <option value="burrito4">Burrito4</option>
+          <option value="burrito5">Burrito5</option>
+          <option value="camper">Camper</option>
+          <option value="gburrito">GBurrito</option>
+          <option value="gburrito2">GBurrito2</option>
+          <option value="journey">Journey</option>
+          <option value="utillitruck3">Utillitruck3</option>
+          <option value="minivan">Minivan</option>
+          <option value="minivan2">Minivan2</option>
+          <option value="paradise">Paradise</option>
+          <option value="pony">Pony</option>
+          <option value="pony2">Pony2</option>
+          <option value="rumpo">Rumpo</option>
+          <option value="rumpo2">Rumpo2</option>
+          <option value="rumpo3">Rumpo3</option>
+          <option value="speedo">Speedo</option>
+          <option value="speedo2">Speedo2</option>
+          <option value="speedo4">Speedo4</option>
+          <option value="surfer">Surfer</option>
+          <option value="surfer2">Surfer2</option>
+          <option value="taco">Taco</option>
+          <option value="youga">Youga</option>
+          <option value="youga2">Youga2</option>
+          <option value="formula">Formula</option>
+          <option value="formula2">Formula2</option>
+        </select>
 
+        <label for="firstGarageDropdown">Einparken in Garage:</label>
+        <select id="firstGarageDropdown">
+          <option value="" disabled selected>-Garage auswählen-</option>
+          <option value="garage1">Garage 1</option>
+          <option value="garage2">Garage 2</option>
+          <option value="garage3">Garage 3</option>
+        </select>
+
+        <label for="licensePlace">Kennzeichen</label>
+        <input type="text" id="licensePlate" placeholder="Kennzeichen eingeben:" />
+
+        <label for="owner">Inhaber</label>
+        <input type="text" id="owner" placeholder="Spieler-ID eingeben:" />
+
+        <label for="faction">Fraktion</label>
+        <select id="faction">
+          <option value="" disabled selected>-Fraktion auswählen-</option>
+          <option value="fraktion1">Department of Justice</option>
+          <option value="fraktion2">Los Santos Police Department</option>
+          <option value="fraktion3">San Andreas Fire und Medical Department</option>
+          <option value="fraktion4">Auto Club Los Santos</option>
+          <option value="fraktion5">TAXI</option>
+          <option value="fraktion6">Department of Homeland Security</option>
+          <option value="fraktion7">Maze Bank</option>
+          <option value="fraktion8">Weazel News</option>
+          <option value="fraktion9">Stadtverwaltung</option>
+          <option value="fraktion10">Crastenburg</option>
+          <option value="fraktion11">Los Santos Sheriff Department</option>
+          <option value="fraktion12">Einreiseamt</option>
+          <option value="fraktion13">Racing</option>
+          <option value="fraktion14">Gruppe 6</option>
+          <option value="fraktion15">Los Santos Park Ranger</option>
+          <option value="fraktion16">San Andreas Recycling</option>
+          <option value="fraktion17">SA Constructions and Ressources</option>
+          <option value="fraktion18">Bar Association</option>
+          <option value="fraktion19">Los Santos Driving Academy</option>
+          <option value="fraktion20">Department of Security</option>
+          <option value="fraktion21">Los Santos Estate Dynasty</option>
+          <option value="fraktion22">Home Vision</option>
+          <option value="fraktion23">Paleto Bay Veterinary Clinic</option>
+          <option value="fraktion24">Department of Corrections</option>
+        </select>
+
+        <label for="company">Gewerbe</label>
+        <select id="company">
+          <option value="" disabled selected>-Gewerbe auswählen-</option>
+          <option value="company1">Go Kart Bahn</option>
+          <option value="company2">Yellow Jack Inn</option>
+          <option value="company3">Free Spot - Unicorn</option>
+          <option value="company4">Sunrise Autos</option>
+          <option value="company5">PDM / Sunrise Cars</option>
+          <option value="company6">Blaine County Motorcycles</option>
+          <option value="company7">RedLine Performance</option>
+          <option value="company8">DreamInk Tattoos</option>
+          <option value="company9">Waffenhändler</option>
+          <option value="company10">Inked Skin</option>
+          <option value="company11">Dönerstube</option>
+          <option value="company12">Tequi - La - La</option>
+          <option value="company13">The Brians</option>
+          <option value="company14">San Andreas Motors</option>
+          <option value="company15">Irish Pub</option>
+          <option value="company16">Weazel News</option>
+          <option value="company17">Poseidon</option>
+          <option value="company18">Benny´s Motor Works</option>
+          <option value="company19">Teahead</option>
+          <option value="company20">San Andreas Racing</option>
+          <option value="company21">BOAT HUB</option>
+          <option value="company22">Free Spot - Kanzlei</option>
+          <option value="company23">Generation X Club</option>
+          <option value="company24">Porter Brewery</option>
+          <option value="company25">Möbelland</option>
+          <option value="company26">Los Santos Shelter</option>
+          <option value="company27">Adventure Explorer</option>
+          <option value="company28">Lasertag</option>
+          <option value="company29">Los Santos Volunteer Fire Department</option>
+          <option value="company30">Bernard Hausmeister Service</option>
+          <option value="company31">SNEAKZ</option>
+          <option value="company32">Jennys Cigar</option>
+          <option value="company33">Design Manufactur</option>
+          <option value="company34">Lomann Legal Consulting</option>
+          <option value="company35">Sabores de Mexico</option>
+          <option value="company36">SheNails</option>
+          <option value="company37">Soundfox Tonstudio</option>
+          <option value="company38">MM Cars</option>
+          <option value="company39">Underground Tuning</option>
+          <option value="company40">Gentry Manor Hotel</option>
+          <option value="company41">Rechtsanwalt Nightingale</option>
+          <option value="company42">New Horizon Practice</option>
+          <option value="company43">Veterinary Clinic</option>
+          <option value="company44">Celestial Holding Group</option>
+        </select>
+
+        <button id="createVehicle">Erstellen</button>
+      </div>
+    </div>
+
+    <!--
+################################################################################
+        Ende
+################################################################################
+        -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -93,18 +93,6 @@ document.querySelectorAll(".player-item").forEach((item) => {
   });
 });
 
-document.querySelector(".close-btn").addEventListener("click", () => {
-  document.getElementById("playerPopup").style.display = "none";
-  document.querySelector(".window-container").classList.remove("blur");
-});
-
-window.addEventListener("click", (event) => {
-  if (event.target === document.getElementById("playerPopup")) {
-    document.getElementById("playerPopup").style.display = "none";
-    document.querySelector(".window-container").classList.remove("blur");
-  }
-});
-
 // Spieler kicken
 document.querySelector(".kick").addEventListener("click", function () {
   console.log("Spieler gekickt");
@@ -279,6 +267,47 @@ document.getElementById("parkVehicle").addEventListener("click", function () {
 document.getElementById("repairVehicle").addEventListener("click", function () {
   console.log("Fahrzeug repariert");
   // Hier kannst du die Funktionalität zum Reparieren des Fahrzeugs implementieren
+});
+
+// ###########################################################################################
+// Fahrzeuge Script Add New Vehicle Popup
+// ###########################################################################################
+
+// Popup öffnen
+document.getElementById("addVehicleBtn").addEventListener("click", function () {
+  document.querySelector(".window-container").classList.add("blur");
+  document.getElementById("newVehiclePopup").style.display = "block";
+});
+
+// Popup schließen
+document.getElementById("closePopup").addEventListener("click", function () {
+  document.querySelector(".window-container").classList.remove("blur");
+  document.getElementById("newVehiclePopup").style.display = "none";
+});
+
+// Popup schließen, wenn der Benutzer außerhalb des Popups klickt
+window.onclick = function (event) {
+  const popup = document.getElementById("newVehiclePopup");
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+};
+
+// Fahrzeug erstellen (Erweiterbar je nach Funktionalität)
+document.getElementById("createVehicle").addEventListener("click", function () {
+  const vehicleType = document.getElementById("vehicleType").value;
+  const firstGarageDropdown = document.getElementById("firstGarageDropdown").value;
+  const licensePlate = document.getElementById("licensePlate").value;
+  const owner = document.getElementById("owner").value;
+  const faction = document.getElementById("faction").value;
+  const business = document.getElementById("business").value;
+
+  console.log(`Fahrzeugtyp: ${vehicleType}, Garage: ${firstGarageDropdown}, Kennzeichen: ${licensePlate}, Inhaber: ${owner}, Fraktion: ${faction}, Gewerbe: ${business}`);
+
+  // Füge hier Code hinzu, um das Fahrzeug in die Liste aufzunehmen oder weitere Funktionen auszuführen
+
+  // Popup schließen
+  document.getElementById("newVehiclePopup").style.display = "none";
 });
 
 // ###########################################################################################
@@ -2520,4 +2549,32 @@ document.addEventListener("DOMContentLoaded", function () {
       loadLocations(filteredLocations);
     }
   }
+});
+
+// ###########################################################################################
+// Item List Script
+// ###########################################################################################
+document.getElementById("searchItem").addEventListener("input", function () {
+  const filterText = this.value.toLowerCase();
+  const isNumber = /^\d+$/.test(filterText);
+  const items = document.querySelectorAll(".item-item");
+
+  items.forEach((item) => {
+    const itemName = item.querySelector(".item-name").textContent.toLowerCase();
+    const itemId = item.querySelector(".item-id").textContent.toLowerCase();
+
+    if (isNumber) {
+      if (itemId.includes(filterText)) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    } else {
+      if (itemName.includes(filterText)) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    }
+  });
 });
