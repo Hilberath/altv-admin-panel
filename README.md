@@ -15,17 +15,17 @@ An administration tool for an AltV server.
 - [ ] Manage players (Kick, Ban, Teleport, Set faction)
 - [ ] Manage vehicles (Vehicle info, Show location, Teleport, Repair)
 - [x] Show and copy current position
-- [ ] Become invisible
+- [x] Become invisible
 - [ ] Be invincible
 - [ ] Enter FreeCam or Noclip mode
 - [ ] Display player names and IDs above players
 - [ ] Send a server-wide or private message
-- [ ] Teleport to a position or waypoint
+- [x] Teleport to a position or waypoint
 - [ ] Play certain sounds and functions like Blackout
 - [ ] Display object information
-- [ ] Spawn a vehicle via a dynamic menu
-- [ ] Change pet model via a dynamic menu
-- [ ] Teleport to known locations via a dynamic menu
+- [x] Spawn a vehicle via a dynamic menu
+- [x] Change pet model via a dynamic menu
+- [x] Teleport to known locations via a dynamic menu
 
 ## Deutsch
 
@@ -42,17 +42,17 @@ Ein Verwaltungstool für ein AltV Server.
 - [ ] Verwalten der Spieler (Kicken, Bannen, Teleportieren, Fraktion setzen)
 - [ ] Verwalten von Fahrzeugen (Infos zum Fahrzeug, Standort anzeigen, Teleportieren, Reparieren)
 - [x] Aktuelle Position anzeigen und Kopieren
-- [ ] Unsichtbar machen
+- [x] Unsichtbar machen
 - [ ] Unsterblich sein
 - [ ] In FreeCam oder Noclip gehen
 - [ ] Die Namen sowie die ID über den Spieler anzeigen
 - [ ] Eine Serverweite oder Private Nachricht abschicken
-- [ ] Zu einer Position oder einem Waypoint Teleportieren
+- [x] Zu einer Position oder einem Waypoint Teleportieren
 - [ ] Bestimmte Sounds und Funktionen wie Blackout abspielen
 - [ ] Objekt Informationen anzeigen lassen
-- [ ] Fahrzeug über ein Dynamisches Menü spawnen
-- [ ] Pet Model über ein Dynamisches Menü swechseln
-- [ ] Dich zu bekannten Locations über ein Dynamisches Menü teleportieren
+- [x] Fahrzeug über ein Dynamisches Menü spawnen
+- [x] Pet Model über ein Dynamisches Menü swechseln
+- [x] Dich zu bekannten Locations über ein Dynamisches Menü teleportieren
 
 ## Screenshots
 
