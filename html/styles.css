@@ -33,7 +33,7 @@ Font: Lexend
 
 body {
   font-family: "Lexend", sans-serif;
-  background: var(--background-color);
+  background: transparent;
   color: var(--text-color);
   display: flex;
   justify-content: flex-start;

@@ -8,6 +8,21 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      body {
+        display: none;
+      }
+    </style>
+    <script>
+      alt.on("showPanel", function (visible) {
+        if (visible) {
+          document.body.style.display = "block";
+        } else {
+          document.body.style.display = "none";
+        }
+      });
+    </script>
   </head>
   <body>
     <div class="window-container">
@@ -26,7 +41,14 @@
             <input type="checkbox" id="adminActiveSwitch" />
             <span class="slider round"></span>
           </label>
-          <span>Admin-Modus</span>
+          <span>Hotkey-Modus</span>
+        </div>
+        <div class="admin-switch">
+          <label class="switch">
+            <input type="checkbox" id="supportActiveSwitch" />
+            <span class="slider round"></span>
+          </label>
+          <span>Support-Modus</span>
         </div>
       </div>
 
@@ -138,95 +160,17 @@
 ################################################################################
         Spieler
 ################################################################################
-        -->
+-->
 
           <div id="content-spieler" class="content-section">
             <div class="search-bar">
               <input type="text" class="form-control" placeholder="Spielername/ID..." id="searchPlayer" />
             </div>
             <div class="player-list">
-              <div class="player-item">
-                <span class="player-name">John Doe</span>
-                <span class="player-id">ID: 10001</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Jane Smith</span>
-                <span class="player-id">ID: 10002</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Michael Johnson</span>
-                <span class="player-id">ID: 10003</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Emily Davis</span>
-                <span class="player-id">ID: 10004</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">David Wilson</span>
-                <span class="player-id">ID: 10005</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Sarah Brown</span>
-                <span class="player-id">ID: 10006</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Chris Miller</span>
-                <span class="player-id">ID: 10007</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Amanda Moore</span>
-                <span class="player-id">ID: 10008</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Daniel Taylor</span>
-                <span class="player-id">ID: 10009</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Jessica Anderson</span>
-                <span class="player-id">ID: 10010</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Andrew Thomas</span>
-                <span class="player-id">ID: 10011</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Olivia Jackson</span>
-                <span class="player-id">ID: 10012</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Joshua White</span>
-                <span class="player-id">ID: 10013</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Megan Harris</span>
-                <span class="player-id">ID: 10014</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Ryan Martin</span>
-                <span class="player-id">ID: 10015</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Sophia Lee</span>
-                <span class="player-id">ID: 10016</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Matthew Perez</span>
-                <span class="player-id">ID: 10017</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Isabella Thompson</span>
-                <span class="player-id">ID: 10018</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Ethan Robinson</span>
-                <span class="player-id">ID: 10019</span>
-              </div>
-              <div class="player-item">
-                <span class="player-name">Mia Clark</span>
-                <span class="player-id">ID: 10020</span>
-              </div>
+              <!-- Die Spieler werden hier dynamisch hinzugefügt -->
             </div>
           </div>
+
           <!--
 ################################################################################
         Fahrzeug
@@ -247,101 +191,6 @@
                 <span class="vehicle-model">Adder</span>
                 <span class="vehicle-license">Kennzeichen: XYZ123</span>
                 <span class="vehicle-id">ID: 30001</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Banshee</span>
-                <span class="vehicle-license">Kennzeichen: ABC456</span>
-                <span class="vehicle-id">ID: 30002</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Buffalo</span>
-                <span class="vehicle-license">Kennzeichen: DEF789</span>
-                <span class="vehicle-id">ID: 30003</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Cheetah</span>
-                <span class="vehicle-license">Kennzeichen: GHI012</span>
-                <span class="vehicle-id">ID: 30004</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Entity XF</span>
-                <span class="vehicle-license">Kennzeichen: JKL345</span>
-                <span class="vehicle-id">ID: 30005</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Futo</span>
-                <span class="vehicle-license">Kennzeichen: MNO678</span>
-                <span class="vehicle-id">ID: 30006</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Infernus</span>
-                <span class="vehicle-license">Kennzeichen: PQR901</span>
-                <span class="vehicle-id">ID: 30007</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Kuruma</span>
-                <span class="vehicle-license">Kennzeichen: STU234</span>
-                <span class="vehicle-id">ID: 30008</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Massacro</span>
-                <span class="vehicle-license">Kennzeichen: VWX567</span>
-                <span class="vehicle-id">ID: 30009</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Sultan</span>
-                <span class="vehicle-license">Kennzeichen: YZA890</span>
-                <span class="vehicle-id">ID: 30010</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">T20</span>
-                <span class="vehicle-license">Kennzeichen: BCD123</span>
-                <span class="vehicle-id">ID: 30011</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Vagner</span>
-                <span class="vehicle-license">Kennzeichen: EFG456</span>
-                <span class="vehicle-id">ID: 30012</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Zentorno</span>
-                <span class="vehicle-license">Kennzeichen: HIJ789</span>
-                <span class="vehicle-id">ID: 30013</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Blista</span>
-                <span class="vehicle-license">Kennzeichen: KLM012</span>
-                <span class="vehicle-id">ID: 30014</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Comet</span>
-                <span class="vehicle-license">Kennzeichen: NOP345</span>
-                <span class="vehicle-id">ID: 30015</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Elegy</span>
-                <span class="vehicle-license">Kennzeichen: QRS678</span>
-                <span class="vehicle-id">ID: 30016</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Felon</span>
-                <span class="vehicle-license">Kennzeichen: TUV901</span>
-                <span class="vehicle-id">ID: 30017</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Gauntlet</span>
-                <span class="vehicle-license">Kennzeichen: WXY234</span>
-                <span class="vehicle-id">ID: 30018</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Hotknife</span>
-                <span class="vehicle-license">Kennzeichen: ZAB567</span>
-                <span class="vehicle-id">ID: 30019</span>
-              </div>
-              <div class="vehicle-item">
-                <span class="vehicle-model">Jester</span>
-                <span class="vehicle-license">Kennzeichen: CDE890</span>
-                <span class="vehicle-id">ID: 30020</span>
               </div>
             </div>
           </div>
@@ -615,10 +464,10 @@
             <div class="item-list">
               <div class="item-item">
                 <span class="item-id">ID: 1</span>
-                <span class="item-name">Fisch</span>
-                <span class="item-typ">Diverse</span>
+                <span class="item-name">Wasser</span>
+                <span class="item-typ">Nahrung</span>
                 <span class="item-desc">Supermarkt</span>
-                <span class="item-weight">0,1 KG</span>
+                <span class="item-weight">0,5 KG</span>
               </div>
             </div>
           </div>
@@ -805,7 +654,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <button class="btn btn-primary" id="changeTyp">Type ändern</button>
+          <button class="btn btn-primary" id="changeGarage">Type ändern</button>
         </div>
 
         <div class="input-row">
@@ -880,7 +729,7 @@
             <option value="company43">Veterinary Clinic</option>
             <option value="company44">Celestial Holding Group</option>
           </select>
-          <button class="btn btn-primary" id="changeCompany">Company/Faction ändern</button>
+          <button class="btn btn-primary" id="changeComFac">Company/Faction ändern</button>
         </div>
 
         <div class="input-row">
@@ -890,7 +739,7 @@
             <option value="garage2">Garage 2</option>
             <option value="garage3">Garage 3</option>
           </select>
-          <button class="btn btn-primary" id="changeGarage">Garage ändern</button>
+          <button class="btn btn-primary" id="changeDefaultGarage">Garage ändern</button>
         </div>
 
         <div class="button-row">

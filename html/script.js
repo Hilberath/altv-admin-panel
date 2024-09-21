@@ -27,8 +27,55 @@ document.querySelectorAll(".nav-link").forEach((item) => {
 });
 
 // ###########################################################################################
+// Kopfzeilen Script Script
+// ###########################################################################################
+
+document.getElementById("supportActiveSwitch").addEventListener("change", function () {
+  if (this.checked) {
+    console.log("Supportmodus aktiviert");
+    alt.emit("setSupportMode", false); // Event an den Client senden, um unsichtbar zu machen
+  } else {
+    console.log("Supportmodus deaktiviert");
+    alt.emit("setSupportMode", true); // Event an den Client senden, um sichtbar zu machen
+  }
+});
+
+// ###########################################################################################
 // Spieler Script
 // ###########################################################################################
+
+// Empfängt die Liste der Spieler vom Client
+if ("alt" in window) {
+  alt.on("updatePlayerList", (playerList) => {
+    console.log("Spielerliste in WebView empfangen:", playerList); // Debug-Ausgabe
+    updatePlayerList(playerList); // Funktion zum Aktualisieren der Spielerliste
+  });
+}
+
+// Funktion zum Aktualisieren der Spielerliste im Admin-Panel
+function updatePlayerList(players) {
+  console.log("Spielerliste wird aktualisiert:", players); // Debug-Ausgabe
+
+  const playerListContainer = document.querySelector(".player-list");
+  playerListContainer.innerHTML = ""; // Liste zurücksetzen
+
+  players.forEach((player) => {
+    const playerElement = document.createElement("div");
+    playerElement.classList.add("player-item");
+    playerElement.innerHTML = `
+      <span class="player-name">${player.name}</span>
+      <span class="player-id">ID: ${player.id}</span>
+    `;
+    playerListContainer.appendChild(playerElement);
+
+    // Füge den Event-Listener für den Klick auf den Spielernamen hinzu
+    playerElement.addEventListener("click", () => {
+      openPlayerPopup(player.name, player.id); // Öffne das Spieler-Popup mit Spielerinformationen
+    });
+  });
+}
+
+// Spieler Filter Script
 document.getElementById("searchPlayer").addEventListener("input", function () {
   const filterText = this.value.toLowerCase();
   const isNumber = /^\d+$/.test(filterText);
@@ -57,40 +104,28 @@ document.getElementById("searchPlayer").addEventListener("input", function () {
 // ###########################################################################################
 // Spieler Script Popup
 // ###########################################################################################
-document.querySelectorAll(".player-item").forEach((item) => {
-  item.addEventListener("click", () => {
-    const playerName = item.querySelector(".player-name").textContent;
-    const playerId = item.querySelector(".player-id").textContent.replace("ID: ", "");
+// Funktion zum Öffnen des Spieler-Popups
+function openPlayerPopup(playerName, playerId) {
+  // Setze die Spielerinformationen im Popup
+  document.getElementById("playerNameId").textContent = `${playerName} (ID: ${playerId})`;
 
-    document.getElementById("playerNameId").textContent = `${playerName} (ID: ${playerId})`;
+  // Mache das Popup sichtbar
+  document.getElementById("playerPopup").style.display = "block";
+  document.querySelector(".window-container").classList.add("blur");
+}
 
-    document.getElementById("playerPopup").style.display = "block";
-    document.querySelector(".window-container").classList.add("blur");
-  });
-});
-
+// Schließen des Spieler-Popups
 document.querySelector(".close-btn").addEventListener("click", () => {
   document.getElementById("playerPopup").style.display = "none";
   document.querySelector(".window-container").classList.remove("blur");
 });
 
+// Popup schließen, wenn außerhalb des Fensters geklickt wird
 window.addEventListener("click", (event) => {
   if (event.target === document.getElementById("playerPopup")) {
     document.getElementById("playerPopup").style.display = "none";
     document.querySelector(".window-container").classList.remove("blur");
   }
-});
-
-document.querySelectorAll(".player-item").forEach((item) => {
-  item.addEventListener("click", () => {
-    const playerName = item.querySelector(".player-name").textContent;
-    const playerId = item.querySelector(".player-id").textContent.replace("ID: ", "");
-
-    document.getElementById("playerNameId").textContent = `${playerName} (ID: ${playerId})`;
-
-    document.getElementById("playerPopup").style.display = "block";
-    document.querySelector(".window-container").classList.add("blur");
-  });
 });
 
 // Spieler kicken
@@ -313,22 +348,29 @@ document.getElementById("createVehicle").addEventListener("click", function () {
 // ###########################################################################################
 // Position Script
 // ###########################################################################################
+
 document.getElementById("showCurrentPosition").addEventListener("change", function () {
   if (this.checked) {
-    document.getElementById("xCoord").value = "157.458";
-    document.getElementById("yCoord").value = "2478.514";
-    document.getElementById("zCoord").value = "32.7";
-    document.getElementById("rotation").value = "1.54";
-    console.log("Aktuelle Position wird angezeigt");
-    // Hier könnte die Funktion zum Anzeigen der aktuellen Position implementiert werden
+    // Anfrage an den Server senden, um die aktuelle Position zu erhalten
+    alt.emit("requestCurrentPosition");
+    console.log("Anfrage zur aktuellen Position und Rotation gesendet.");
   } else {
     document.getElementById("xCoord").value = "";
     document.getElementById("yCoord").value = "";
     document.getElementById("zCoord").value = "";
     document.getElementById("rotation").value = "";
-    console.log("Aktuelle Position wird ausgeblendet");
-    // Hier könnte die Funktion zum Ausblenden der aktuellen Position implementiert werden
+    console.log("Aktuelle Position wird ausgeblendet.");
   }
+});
+
+// Funktion, um die erhaltenen Positionsdaten in die Felder einzutragen
+alt.on("updatePositionFields", (position) => {
+  const { x, y, z, heading } = position;
+  document.getElementById("xCoord").value = x;
+  document.getElementById("yCoord").value = y;
+  document.getElementById("zCoord").value = z;
+  document.getElementById("rotation").value = heading;
+  console.log(`Position aktualisiert: X=${x}, Y=${y}, Z=${z}, Heading=${heading}`);
 });
 
 document.querySelectorAll(".copyCoord").forEach((button) => {
@@ -376,10 +418,12 @@ document.getElementById("toggleVisibility").addEventListener("change", function 
 
   if (this.checked) {
     statusText.textContent = "Du bist gerade unsichtbar";
-    // Hier kommt die Funktion für aktiviert hin
+    console.log("Unsichtbarkeit aktiviert");
+    alt.emit("setVisibility", false); // Event an den Client senden, um unsichtbar zu machen
   } else {
     statusText.textContent = "Du bist gerade sichtbar";
-    // Hier kommt die Funktion für deaktiviert hin
+    console.log("Sichtbarkeit aktiviert");
+    alt.emit("setVisibility", true); // Event an den Client senden, um sichtbar zu machen
   }
 });
 
@@ -500,8 +544,18 @@ document.getElementById("teleportButton").addEventListener("click", function () 
   const zCoord = document.getElementById("zCoordTeleport").value.trim();
 
   if (xCoord && yCoord && zCoord) {
-    console.log(`Teleportieren zu Koordinaten: x=${xCoord}, y=${yCoord}, z=${zCoord}`);
-    // Hier könnte die Funktion zum Teleportieren zu den angegebenen Koordinaten hinzugefügt werden
+    const x = parseFloat(xCoord);
+    const y = parseFloat(yCoord);
+    const z = parseFloat(zCoord);
+
+    if (isNaN(x) || isNaN(y) || isNaN(z)) {
+      console.error("Ungültige Koordinaten für Teleportation");
+      alert("Die eingegebenen Koordinaten müssen numerisch sein.");
+      return;
+    }
+
+    console.log(`Teleportieren zu Koordinaten: x=${x}, y=${y}, z=${z}`);
+    alt.emit("teleportToCoords", { x, y, z }); // Event an den Client senden, um den Spieler zu teleportieren
   } else {
     console.error("Alle Koordinaten (x, y, z) müssen ausgefüllt sein.");
     alert("Bitte fülle alle Koordinaten (x, y und z) aus, um zu teleportieren.");
@@ -511,7 +565,7 @@ document.getElementById("teleportButton").addEventListener("click", function () 
 // Teleportieren zum Waypoint
 document.getElementById("teleportWaypointButton").addEventListener("click", function () {
   console.log("Teleportieren zum Waypoint");
-  // Hier könnte die Funktion zum Teleportieren zum Waypoint hinzugefügt werden
+  alt.emit("teleportToWaypoint"); // Event senden, um zum Waypoint zu teleportieren
 });
 
 // ###########################################################################################
@@ -1260,9 +1314,10 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       vehicleContainer.appendChild(vehicleElement);
 
+      // When clicking on the vehicle, spawn it
       vehicleElement.querySelector(".vehicle-name").addEventListener("click", function () {
         console.log(`Spawning vehicle: ${vehicle.model}`);
-        // Der Code zum Spawnen des Fahrzeugs hinzugefügen
+        alt.emit("spawnVehicle", vehicle.model); // Emit event to the server
       });
     });
   }
@@ -2348,9 +2403,10 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       petContainer.appendChild(petElement);
 
+      // Wenn auf ein Modell geklickt wird, ändere das Pedmodel
       petElement.querySelector(".pet-name").addEventListener("click", function () {
-        console.log(`Spawning pet: ${pet.model}`);
-        // Der Code zum wechseln des Ped Models hinzufügen
+        console.log(`Wechsel zu Pedmodel: ${pet.model}`);
+        alt.emit("changePedModel", pet.model); // Sende das Pedmodel an den Server
       });
     });
   }
@@ -2528,15 +2584,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const locationElement = document.createElement("div");
       locationElement.className = "location";
       locationElement.innerHTML = `
-        <img src="assets/teleport/models/${location.name}.png" alt="${location.name}">
-        <div class="location-name">${location.name}</div>
-      `;
+              <img src="assets/teleport/models/${location.name}.png" alt="${location.name}">
+              <div class="location-name">${location.name}</div>
+          `;
       locationContainer.appendChild(locationElement);
 
+      // Wenn auf eine Location geklickt wird, sende das Teleport-Event an den Server
       locationElement.querySelector(".location-name").addEventListener("click", function () {
-        console.log(`Teleporting to location: ${location.position}`);
-        console.log(`${location.position.join(", ")}`);
-        // Der Code zum Teleportieren hinzufügen
+        console.log(`Teleportiere zu: ${location.position}`);
+        alt.emit("teleportToLocation", location.position); // Event an den Server senden
       });
     });
   }
