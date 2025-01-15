@@ -2584,7 +2584,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const locationElement = document.createElement("div");
       locationElement.className = "location";
       locationElement.innerHTML = `
-              <img src="assets/teleport/models/${location.name}.png" alt="${location.name}">
+              <img src="assets/teleport/models/${location.name}.webp" alt="${location.name}">
               <div class="location-name">${location.name}</div>
           `;
       locationContainer.appendChild(locationElement);
